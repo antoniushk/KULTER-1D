@@ -1,0 +1,48 @@
+\begin{thebibliography}{}
+\itemsep0pt
+
+\bibitem[Berg and Abubakar, 2001]{vanDenBerg2001}
+Berg, P. M. v.~d. and A. Abubakar,  2001, {Contrast source inversion method:
+  State of art}: Progress in Electromagnetic Research, {\bf 34}, 189--218.
+
+\bibitem[Commer and Newman, 2008]{Commer:2008gb}
+Commer, M. and G.~A. Newman,  2008, {New advances in three-dimensional
+  controlled-source electromagnetic inversion}: Geophysical Journal
+  International, {\bf 172}, 513--535.
+
+\bibitem[Constable et~al., 2009]{SDTrough}
+Constable, S., K. Key, and L. Lewis,  2009, {Mapping offshore sedimentary
+  structure using electromagnetic methods and terrain effects in marine
+  magnetotelluric data}: Geophysical Journal International, {\bf 176},
+  431--442.
+
+\bibitem[Constable et~al., 1987]{geo52-03-02890300}
+Constable, S.~C., R.~L. Parker, and C.~G. Constable,  1987, {Occam's inversion
+  - A practical algorithm for generating smooth models from electromagnetic
+  sounding data}: Geophysics, {\bf 52}, 289--300.
+
+\bibitem[deGroot Hedlin and Constable, 1990]{geo55-12-16131624}
+deGroot Hedlin, C. and S. Constable,  1990, {Occam's inversion to generate
+  smooth two-dimensional models from magnetotelluric data}: Geophysics, {\bf
+  55}, 1613--1624.
+
+\bibitem[Habashy and Abubakar, 2004]{Habashy:2004ux}
+Habashy, T. and A. Abubakar,  2004, {A general framework for constraint
+  minimization for the inversion of electromagnetic measurements}: Progress in
+  electromagnetics Research.
+
+\bibitem[Key, 2009]{key:F9}
+Key, K.,  2009, {1D inversion of multicomponent, multifrequency marine CSEM
+  data: Methodology and synthetic studies for resolving thin resistive layers}:
+  Geophysics, {\bf 74}, F9--F20.
+
+\bibitem[Key and Lockwood, 2010]{key:F63}
+Key, K. and A. Lockwood,  2010, {Determining the orientation of marine CSEM
+  receivers using orthogonal Procrustes rotation analysis}: Geophysics, {\bf
+  75}, F63--F70.
+
+\bibitem[Portniaguine and Zhdanov, 1999]{portniaguine:874}
+Portniaguine, O. and M.~S. Zhdanov,  1999, {Focusing geophysical inversion
+  images}: Geophysics, {\bf 64}, 874--887.
+
+\end{thebibliography}

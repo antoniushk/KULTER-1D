@@ -1,0 +1,24 @@
+These are some example synthetic inversion data sets that I have used for testing various bits of Dipole1D and Occam1DCSEM.  You can use these to study the various file formats and to test that your version of Occam1DCSEM is working correctly.
+
+What is a Synthetic Inversion?
+
+Synthetic inversions can be useful for studying how well various structures can be resolved (if at all) for given data components, transmitters, frequencies, noise levels, etc.  For a synthetic inversion, Dipole1D can be used to compute the forward response of a known model, some noise is then added to the responses and these can then be inverted using Occam1DCSEM. 
+
+What's in the folders:
+
+/Synthetic/CanonicalReservoir:
+
+This folder contains various synthetic inversions for the canonical 1D reservoir model.  The Dipole1D folder has the forward model RUNFILE used by Dipole1D.   The other subfolders contain inversion files for different data types, as indicated by the folder names.  
+
+/Synthetic/CanonicalReservoirFiniteDipole:
+
+Some more canonical model examples, but this time for a finite length dipole.  See the RUNFILE in the Dipole1D folder for the syntax required to include the dipole length.
+
+
+/Synthetic/CanonicalPlusBasement
+
+The canonical 1D reservoir with a basement added to it. There's a folder for CSEM data, another for MT data and another for joint inversion of CSEM+MT data.  The MT data is critical for getting the increase in basement resistivity (but the MT is also insensitive to the thin reservoir).
+
+/Synthetic/DeepOcean:
+
+An example for a deep ocean lithosphere CSEM sounding.

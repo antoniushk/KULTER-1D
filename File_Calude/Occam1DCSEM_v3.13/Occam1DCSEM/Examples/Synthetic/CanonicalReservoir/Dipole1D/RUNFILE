@@ -1,0 +1,58 @@
+Version:          DIPOLE1D_1.0
+Output Filename:  Canonical.csem                    ! I use the .csem file extension for the output from the 1D and 2D codes.
+CompDerivatives:  no								! yes or no to also output the model derivatives (df_i/dsigma_j)
+# TRANSMITTERS:   41          							
+ X           Y           Z         ROTATION      DIP        ! x,y,z position in meters
+ 0           0         950          90           0          ! rotation is the horizontal angle of the antenna in degrees, positive from x axis towards y axis.
+ 0         500         950          90           0          ! dip is the dip angle of antenna, positive down.
+ 0        1000         950          90           0          ! So here a Rotation of 90 means the antenna points along the y axis.
+ 0        1500         950          90           0          ! The transmitter is towed here along the y axis.
+ 0        2000         950          90           0
+ 0        2500         950          90           0
+ 0        3000         950          90           0
+ 0        3500         950          90           0
+ 0        4000         950          90           0
+ 0        4500         950          90           0
+ 0        5000         950          90           0
+ 0        5500         950          90           0
+ 0        6000         950          90           0
+ 0        6500         950          90           0
+ 0        7000         950          90           0
+ 0        7500         950          90           0
+ 0        8000         950          90           0
+ 0        8500         950          90           0
+ 0        9000         950          90           0
+ 0        9500         950          90           0
+ 0       10000         950          90           0
+ 0       10500         950          90           0
+ 0       11000         950          90           0
+ 0       11500         950          90           0
+ 0       12000         950          90           0
+ 0       12500         950          90           0
+ 0       13000         950          90           0
+ 0       13500         950          90           0
+ 0       14000         950          90           0
+ 0       14500         950          90           0
+ 0       15000         950          90           0
+ 0       15500         950          90           0
+ 0       16000         950          90           0
+ 0       16500         950          90           0
+ 0       17000         950          90           0
+ 0       17500         950          90           0
+ 0       18000         950          90           0
+ 0       18500         950          90           0
+ 0       19000         950          90           0
+ 0       19500         950          90           0
+ 0       20000         950          90           0
+# FREQUENCIES:     2
+   0.25
+   1.0
+# LAYERS:         5                    ! This section gives the number of layers, and their top depths and resistivities (ohm-m). 
+-100000 1d12                           ! The top depth of the first layer is not used in the code. In this example the first layer is air (1d12 ohm-m)    
+ 0     .30                             ! This is a seawater layer, extending from 0 - 1000 m depth.  Note that the 0 point is arbitrary. You could change all the depths so 0 was the seafloor, if so desired.
+1000    1.0                            ! This is the first seafloor layer, extending from 1000-2000 m depth.
+2000    100                            ! This is a 100 m thick, 100 ohm-m layer at 2000-2100 m depth.
+2100    1.0                           
+# RECEIVERS:      1                    ! This section lists the number of receivers, and then their x,y,z depths.
+  0          0        1000             ! Here there is only a single receiver at x,y = 0, z = 1000 m.  Note that receivers can be located anywhere in x,y,z.
+     
