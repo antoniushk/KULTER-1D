@@ -1,0 +1,97 @@
+ Starting R.M.S. =    7.9144156213760173     
+ ** Iteration            1  **
+tofmu: misfit =  5.9846     amu =  5.00000000       min/max params:        1.88596,      2.51071
+tofmu: misfit =  4.7893     amu =  4.00000000       min/max params:        1.86320,      3.81532
+tofmu: misfit =  9.9858     amu =  2.38196599       min/max params:        1.71724,      4.57907
+tofmu: misfit =  8.9720     amu =  3.38196603       min/max params:        1.83346,      4.37712
+tofmu: misfit =  3.5395     amu =  4.40000001       min/max params:        1.86627,      3.26123
+ Minimum tol from fminocc is at mu =   4.4000000060604645     
+ and is =   3.5395217843574911     
+ using            5  evaluations of function
+ Stepsize is =   0.80297303308969070     
+ Roughness is =    5.0265966337963403E-002
+  
+ Starting R.M.S. =    3.5395217843574911     
+ ** Iteration            2  **
+tofmu: misfit =  3.0478     amu =  4.40000001       min/max params:        1.85234,      3.44759
+tofmu: misfit =  1.5693     amu =  3.40000001       min/max params:        1.81363,      4.17816
+tofmu: misfit =  1.3426     amu =  1.78196600       min/max params:        1.58445,      4.59677
+tofmu: misfit =  1.2338     amu =  2.45389906       min/max params:        1.69606,      4.51697
+tofmu: misfit =  1.2851     amu =  2.81527745       min/max params:        1.74805,      4.42878
+tofmu: misfit =  1.2319     amu =  2.19724348       min/max params:        1.65506,      4.55730
+ Minimum tol from fminocc is at mu =   2.1972434836885939     
+ and is =   1.2319428273186430     
+ using            6  evaluations of function
+ Stepsize is =   0.41454316292826254     
+ Roughness is =   0.31332364946897640     
+  
+ Starting R.M.S. =    1.2319428273186430     
+ ** Iteration            3  **
+tofmu: misfit =  1.0632     amu =  2.19724348       min/max params:        1.65889,      4.71350
+tofmu: misfit =  1.2775     amu =  1.19724348       min/max params:        1.46254,      4.91787
+tofmu: misfit =  2.5687     amu =  3.81527749       min/max params:        1.81994,      3.63559
+tofmu: misfit =  1.2491     amu =  2.81527745       min/max params:        1.73964,      4.44259
+tofmu: misfit =  1.0106     amu =  1.81527749       min/max params:        1.60766,      4.81037
+tofmu: misfit =  1.0041     amu =  1.58312489       min/max params:        1.58072,      4.85557
+tofmu: misfit =  1.0442     amu =  1.42481240       min/max params:        1.53933,      4.88256
+ Minimum tol from fminocc is at mu =   1.5831248876956590     
+ and is =   1.0040929432298724     
+ using            7  evaluations of function
+ Stepsize is =    7.9595014824512644E-002
+ Roughness is =   0.61222348842773822     
+  
+ Starting R.M.S. =    1.0040929432298724     
+ ** Iteration            4  **
+tofmu: misfit = 0.98164     amu =  1.58312489       min/max params:        1.58765,      4.83969
+tofmu: misfit =  2.5430     amu = 0.583124888       min/max params:        1.23146,      5.01877
+tofmu: misfit =  1.8482     amu =  3.20115889       min/max params:        1.75283,      4.06124
+ Minimum tol from minbrk is at mu =   1.5831248876956590     
+ and is =  0.98164368887182774     
+ using            3  evaluations of function
+tofmu: misfit =  1.0299     amu =  1.88415490       min/max params:        1.61576,      4.75888
+tofmu: misfit = 0.99815     amu =  1.69763517       min/max params:        1.59737,      4.81102
+tofmu: misfit = 0.99997     amu =  1.70975439       min/max params:        1.59848,      4.80784
+tofmu: misfit =  1.0001     amu =  1.71025450       min/max params:        1.59853,      4.80771
+ Intercept is at mu =    1.7097543929641810     
+ and is =   0.99997462312862873     
+ using            4  function evaluations
+ Stepsize is =    2.2702781077046326E-002
+ Roughness is =   0.50523979771528071     
+  
+ Starting R.M.S. =   0.99997462312862873     
+ ** Iteration            5  **
+tofmu: misfit = 0.97885     amu =  1.58312489       min/max params:        1.58268,      4.84123
+tofmu: misfit =  2.8872     amu = 0.583124888       min/max params:        1.22340,      5.00856
+tofmu: misfit =  1.7574     amu =  3.20115889       min/max params:        1.76015,      4.08428
+ Minimum tol from minbrk is at mu =   1.5831248876956590     
+ and is =  0.97885113905491083     
+ using            3  evaluations of function
+tofmu: misfit =  1.0211     amu =  1.88415490       min/max params:        1.61464,      4.76676
+tofmu: misfit = 0.99920     amu =  1.73375460       min/max params:        1.59776,      4.80609
+tofmu: misfit = 0.99997     amu =  1.73925918       min/max params:        1.59835,      4.80473
+tofmu: misfit =  1.0000     amu =  1.73975929       min/max params:        1.59841,      4.80460
+ Intercept is at mu =    1.7392591842765968     
+ and is =   0.99996922305573399     
+ using            4  function evaluations
+ Stepsize is =    4.5696426659260188E-003
+ Roughness is =   0.50340757329923369     
+  
+ Starting R.M.S. =   0.99996922305573399     
+ ** Iteration            6  **
+tofmu: misfit = 0.97924     amu =  1.58312489       min/max params:        1.58213,      4.84047
+tofmu: misfit =  2.9066     amu = 0.583124888       min/max params:        1.22326,      5.00644
+tofmu: misfit =  1.7600     amu =  3.20115889       min/max params:        1.76022,      4.08360
+ Minimum tol from minbrk is at mu =   1.5831248876956590     
+ and is =  0.97923553051711776     
+ using            3  evaluations of function
+tofmu: misfit =  1.0216     amu =  1.88415490       min/max params:        1.61472,      4.76705
+tofmu: misfit = 0.99922     amu =  1.73051232       min/max params:        1.59723,      4.80663
+tofmu: misfit =  1.0000     amu =  1.73604343       min/max params:        1.59783,      4.80528
+tofmu: misfit =  1.0001     amu =  1.73654354       min/max params:        1.59788,      4.80516
+ Intercept is at mu =    1.7360434343412607     
+ and is =   0.99999983294601702     
+ using            4  function evaluations
+ Stepsize is =    6.5296839057267877E-004
+ Roughness is =   0.50327829304421823     
+  
+  Stop on normal convergence

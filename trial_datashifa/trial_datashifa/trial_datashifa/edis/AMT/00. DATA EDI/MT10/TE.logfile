@@ -1,0 +1,404 @@
+ Starting R.M.S. =    7.4002277056308357     
+ ** Iteration            1  **
+tofmu: misfit =  6.1376     amu =  5.00000000       min/max params:        1.81546,      2.18782
+tofmu: misfit =  3.2034     amu =  4.00000000       min/max params:        1.74102,      3.39795
+tofmu: misfit =  12.106     amu =  2.38196599       min/max params:        1.71164,      4.81474
+tofmu: misfit =  7.3091     amu =  3.38196603       min/max params:        1.71203,      4.28107
+tofmu: misfit =  4.7752     amu =  4.40000001       min/max params:        1.76941,      2.79317
+ Minimum tol from fminocc is at mu =   4.0000000000000000     
+ and is =   3.2033834961482759     
+ using            5  evaluations of function
+ Stepsize is =   0.96219010339374356     
+ Roughness is =    7.1362983001345956E-002
+  
+ Starting R.M.S. =    3.2033834961482759     
+ ** Iteration            2  **
+tofmu: misfit =  2.8459     amu =  4.00000000       min/max params:        1.70711,      3.66082
+tofmu: misfit =  2.3859     amu =  3.00000000       min/max params:        1.60967,      4.17545
+tofmu: misfit =  3.5063     amu =  1.38196599       min/max params:        1.56672,      4.84816
+tofmu: misfit =  2.3643     amu =  2.38196603       min/max params:        1.60024,      4.44624
+tofmu: misfit =  2.5480     amu =  2.00000002       min/max params:        1.62070,      4.61966
+tofmu: misfit =  2.3517     amu =  2.62016264       min/max params:        1.59545,      4.34022
+ Minimum tol from fminocc is at mu =   2.6201626383438623     
+ and is =   2.3516784336180190     
+ using            6  evaluations of function
+ Stepsize is =   0.31269221701136696     
+ Roughness is =   0.22482495113399206     
+  
+ Starting R.M.S. =    2.3516784336180190     
+ ** Iteration            3  **
+tofmu: misfit =  2.3362     amu =  2.62016264       min/max params:        1.58794,      4.16101
+tofmu: misfit =  2.5124     amu =  1.62016264       min/max params:        1.55730,      4.47196
+tofmu: misfit =  3.2468     amu =  4.23819664       min/max params:        1.74507,      3.45264
+tofmu: misfit =  2.4835     amu =  3.23819661       min/max params:        1.63514,      3.96396
+tofmu: misfit =  2.2861     amu =  2.23819664       min/max params:        1.58865,      4.26215
+tofmu: misfit =  2.2756     amu =  2.01437698       min/max params:        1.60581,      4.33146
+ Minimum tol from fminocc is at mu =   2.0143769757228931     
+ and is =   2.2756090322568658     
+ using            6  evaluations of function
+ Stepsize is =   0.12987657513637138     
+ Roughness is =   0.39331631252073401     
+  
+ Starting R.M.S. =    2.2756090322568658     
+ ** Iteration            4  **
+tofmu: misfit =  2.2452     amu =  2.01437698       min/max params:        1.60264,      4.37865
+tofmu: misfit =  2.9124     amu =  1.01437698       min/max params:        1.43606,      4.78498
+tofmu: misfit =  2.8274     amu =  3.63241098       min/max params:        1.68248,      3.80763
+tofmu: misfit =  2.3758     amu =  2.63241094       min/max params:        1.59403,      4.15351
+tofmu: misfit =  2.2152     amu =  1.63241098       min/max params:        1.56141,      4.54719
+tofmu: misfit =  2.2810     amu =  1.46916988       min/max params:        1.53100,      4.61749
+tofmu: misfit =  2.2126     amu =  1.79565208       min/max params:        1.58821,      4.47449
+ Minimum tol from fminocc is at mu =   1.7956520815092745     
+ and is =   2.2125542309678248     
+ using            7  evaluations of function
+ Stepsize is =   0.10231479225703358     
+ Roughness is =   0.60953225572174674     
+  
+ Starting R.M.S. =    2.2125542309678248     
+ ** Iteration            5  **
+tofmu: misfit =  2.2091     amu =  1.79565208       min/max params:        1.58826,      4.47726
+tofmu: misfit =  3.0856     amu = 0.795652082       min/max params:        1.39628,      4.93844
+tofmu: misfit =  2.9296     amu =  3.41368609       min/max params:        1.66671,      3.85580
+tofmu: misfit =  2.4059     amu =  2.41368605       min/max params:        1.58745,      4.18638
+tofmu: misfit =  2.1931     amu =  1.41368609       min/max params:        1.52016,      4.67293
+tofmu: misfit =  2.2690     amu =  1.27231748       min/max params:        1.49115,      4.74046
+tofmu: misfit =  2.1773     amu =  1.55505470       min/max params:        1.54753,      4.60190
+ Minimum tol from fminocc is at mu =   1.5550546975483686     
+ and is =   2.1772519720731971     
+ using            7  evaluations of function
+ Stepsize is =   0.12056336859191508     
+ Roughness is =   0.97726193348886414     
+  
+ Starting R.M.S. =    2.1772519720731971     
+ ** Iteration            6  **
+tofmu: misfit =  2.1748     amu =  1.55505470       min/max params:        1.54787,      4.60909
+tofmu: misfit =  3.3121     amu = 0.555054698       min/max params:        1.36281,      5.16178
+tofmu: misfit =  3.2373     amu =  3.17308870       min/max params:        1.64713,      3.86436
+tofmu: misfit =  2.5337     amu =  2.17308867       min/max params:        1.58822,      4.24920
+tofmu: misfit =  2.1676     amu =  1.17308870       min/max params:        1.47061,      4.84242
+tofmu: misfit =  2.2468     amu =  1.05577983       min/max params:        1.44590,      4.90980
+tofmu: misfit =  2.1434     amu =  1.29039757       min/max params:        1.49540,      4.77238
+tofmu: misfit =  2.1527     amu =  1.41943733       min/max params:        1.52188,      4.69324
+ Minimum tol from fminocc is at mu =   1.2903975748328540     
+ and is =   2.1433885996507369     
+ using            8  evaluations of function
+ Stepsize is =   0.13071829905170690     
+ Roughness is =    1.6024839796136956     
+  
+ Starting R.M.S. =    2.1433885996507369     
+ ** Iteration            7  **
+tofmu: misfit =  2.1397     amu =  1.29039757       min/max params:        1.49530,      4.78417
+tofmu: misfit =  3.4522     amu = 0.290397575       min/max params:        1.33883,      5.43770
+tofmu: misfit =  3.6911     amu =  2.90843158       min/max params:        1.62059,      3.85069
+tofmu: misfit =  2.7529     amu =  1.90843154       min/max params:        1.59500,      4.32025
+tofmu: misfit =  2.1464     amu = 0.908431580       min/max params:        1.41351,      5.08012
+tofmu: misfit =  2.1756     amu =  1.41943733       min/max params:        1.52117,      4.68103
+tofmu: misfit =  2.1195     amu =  1.16135782       min/max params:        1.46779,      4.88730
+tofmu: misfit =  2.1121     amu =  1.04522203       min/max params:        1.44253,      4.97810
+ Minimum tol from fminocc is at mu =   1.0452220319634957     
+ and is =   2.1120927841714741     
+ using            8  evaluations of function
+ Stepsize is =   0.10773387576362820     
+ Roughness is =    2.4667363094712971     
+  
+ Starting R.M.S. =    2.1120927841714741     
+ ** Iteration            8  **
+tofmu: misfit =  2.1116     amu =  1.04522203       min/max params:        1.44277,      4.97598
+tofmu: misfit =  3.6352     amu = 0.452220320E-01   min/max params:        1.28143,      5.68432
+tofmu: misfit =  4.1077     amu =  2.66325604       min/max params:        1.59121,      3.79373
+tofmu: misfit =  2.9056     amu =  1.66325600       min/max params:        1.55348,      4.36684
+tofmu: misfit =  2.1266     amu = 0.663256037       min/max params:        1.36455,      5.32709
+tofmu: misfit =  2.1376     amu =  1.14974424       min/max params:        1.46500,      4.86902
+tofmu: misfit =  2.0933     amu = 0.887373312       min/max params:        1.40879,      5.13116
+tofmu: misfit =  2.0916     amu = 0.798635979       min/max params:        1.39034,      5.21281
+ Minimum tol from fminocc is at mu =  0.79863597948055787     
+ and is =   2.0916275226024648     
+ using            8  evaluations of function
+ Stepsize is =   0.10213147000781299     
+ Roughness is =    3.5383519836012072     
+  
+ Starting R.M.S. =    2.0916275226024648     
+ ** Iteration            9  **
+tofmu: misfit =  2.0950     amu = 0.798635979       min/max params:        1.39018,      5.15904
+tofmu: misfit =  3.9953     amu =-0.201364021       min/max params:        1.15709,      5.90796
+tofmu: misfit =  4.5395     amu =  2.41666998       min/max params:        1.55784,      3.72050
+tofmu: misfit =  3.1060     amu =  1.41666995       min/max params:        1.50607,      4.41092
+tofmu: misfit =  2.1107     amu = 0.416669985       min/max params:        1.31986,      5.54799
+tofmu: misfit =  2.0789     amu = 0.619907886       min/max params:        1.35381,      5.35769
+tofmu: misfit =  2.0825     amu = 0.681898676       min/max params:        1.36601,      5.29174
+tofmu: misfit =  2.0792     amu = 0.543170073       min/max params:        1.33971,      5.43437
+ Minimum tol from fminocc is at mu =  0.61990788633293514     
+ and is =   2.0788949154650611     
+ using            8  evaluations of function
+ Stepsize is =    4.1642798628664546E-002
+ Roughness is =    4.1593075812949385     
+  
+ Starting R.M.S. =    2.0788949154650611     
+ ** Iteration           10  **
+tofmu: misfit =  2.0805     amu = 0.619907886       min/max params:        1.35916,      5.32283
+tofmu: misfit =  4.6828     amu =-0.380092114       min/max params:        1.03375,      6.03983
+tofmu: misfit =  4.6464     amu =  2.23794189       min/max params:        1.52583,      3.68696
+tofmu: misfit =  2.9077     amu =  1.23794185       min/max params:        1.46736,      4.49028
+tofmu: misfit =  2.1560     amu = 0.237941891       min/max params:        1.30699,      5.70450
+tofmu: misfit =  2.0736     amu = 0.493262467       min/max params:        1.33774,      5.46786
+tofmu: misfit =  2.0738     amu = 0.443936220       min/max params:        1.33025,      5.51947
+tofmu: misfit =  2.0756     amu = 0.542588715       min/max params:        1.34576,      5.41345
+ Minimum tol from fminocc is at mu =  0.49326246747001201     
+ and is =   2.0735833761627678     
+ using            8  evaluations of function
+ Stepsize is =    6.9596088492661606E-002
+ Roughness is =    4.8068477577338982     
+  
+ Starting R.M.S. =    2.0735833761627678     
+ ** Iteration           11  **
+tofmu: misfit =  2.0783     amu = 0.493262467       min/max params:        1.33474,      5.42316
+tofmu: misfit =  4.7015     amu =-0.506737533       min/max params:        1.02290,      6.13119
+tofmu: misfit =  4.8873     amu =  2.11129647       min/max params:        1.50794,      3.65438
+tofmu: misfit =  3.1188     amu =  1.11129644       min/max params:        1.44389,      4.53716
+tofmu: misfit =  2.1168     amu = 0.111296473       min/max params:        1.28390,      5.80704
+tofmu: misfit =  2.0693     amu = 0.330555499       min/max params:        1.30796,      5.60931
+tofmu: misfit =  2.0706     amu = 0.373316459       min/max params:        1.31447,      5.56364
+tofmu: misfit =  2.0695     amu = 0.277697414       min/max params:        1.30061,      5.66249
+ Minimum tol from fminocc is at mu =  0.33055549922886385     
+ and is =   2.0693306626245880     
+ using            8  evaluations of function
+ Stepsize is =    3.9132289714037323E-002
+ Roughness is =    5.5602472387967472     
+  
+ Starting R.M.S. =    2.0693306626245880     
+ ** Iteration           12  **
+tofmu: misfit =  2.0712     amu = 0.330555499       min/max params:        1.31495,      5.54560
+tofmu: misfit =  5.3134     amu =-0.669444501       min/max params:        0.91993,      6.32533
+tofmu: misfit =  5.0074     amu =  1.94858950       min/max params:        1.47734,      3.61249
+tofmu: misfit =  2.9921     amu = 0.948589468       min/max params:        1.41118,      4.60666
+tofmu: misfit =  2.1782     amu =-0.514104956E-01   min/max params:        1.27984,      5.92005
+tofmu: misfit =  2.0672     amu = 0.218692170       min/max params:        1.29994,      5.67601
+tofmu: misfit =  2.0683     amu = 0.259274949       min/max params:        1.30506,      5.63075
+tofmu: misfit =  2.0723     amu = 0.115522137       min/max params:        1.28902,      5.78060
+tofmu: misfit =  2.0670     amu = 0.196822953       min/max params:        1.29736,      5.69943
+tofmu: misfit =  2.0672     amu = 0.177140657       min/max params:        1.29515,      5.71993
+ Minimum tol from fminocc is at mu =  0.19682295282656076     
+ and is =   2.0670016801615181     
+ using           10  evaluations of function
+ Stepsize is =    9.7791310978853171E-002
+ Roughness is =    6.2221950748900632     
+  
+ Starting R.M.S. =    2.0670016801615181     
+ ** Iteration           13  **
+tofmu: misfit =  2.0810     amu = 0.196822953       min/max params:        1.29157,      5.66307
+tofmu: misfit =  5.1362     amu =-0.803177047       min/max params:        0.88865,      6.32996
+tofmu: misfit =  5.2234     amu =  1.81485696       min/max params:        1.46044,      3.61171
+tofmu: misfit =  3.3235     amu = 0.814856921       min/max params:        1.38946,      4.70251
+tofmu: misfit =  2.1019     amu =-0.185143042       min/max params:        1.25470,      6.02641
+tofmu: misfit =  2.0650     amu = 0.190685359E-01   min/max params:        1.26836,      5.85715
+tofmu: misfit =  2.0655     amu = 0.443996864E-01   min/max params:        1.27116,      5.83232
+tofmu: misfit =  2.0649     amu = 0.128448356E-01   min/max params:        1.26771,      5.86312
+tofmu: misfit =  2.0668     amu =-0.627798011E-01   min/max params:        1.26082,      5.93135
+tofmu: misfit =  2.0649     amu =-0.345595582E-02   min/max params:        1.26605,      5.87848
+tofmu: misfit =  2.0649     amu =-0.917063179E-03   min/max params:        1.26630,      5.87611
+tofmu: misfit =  2.0649     amu =-0.452074690E-03   min/max params:        1.26635,      5.87568
+tofmu: misfit =  2.0649     amu =-0.557607244E-03   min/max params:        1.26634,      5.87578
+tofmu: misfit =  2.0649     amu =-0.613368069E-03   min/max params:        1.26633,      5.87583
+ Minimum tol from fminocc is at mu =  -5.5760724354693653E-004
+ and is =   2.0648844030537301     
+ using           14  evaluations of function
+ Stepsize is =    9.1050486759619381E-002
+ Roughness is =    7.2460546859846415     
+  
+ Starting R.M.S. =    2.0648844030537301     
+ ** Iteration           14  **
+tofmu: misfit =  2.0669     amu =-0.557607244E-03   min/max params:        1.28333,      5.76911
+tofmu: misfit =  6.5894     amu = -1.00055761       min/max params:        0.63740,      8.49584
+tofmu: misfit =  5.2300     amu =  1.61747640       min/max params:        1.42028,      3.55367
+tofmu: misfit =  2.9002     amu = 0.617476361       min/max params:        1.35537,      4.78907
+tofmu: misfit =  2.4169     amu =-0.382523602       min/max params:        1.27040,      6.10942
+tofmu: misfit =  2.0672     amu = 0.107613839E-01   min/max params:        1.28441,      5.75582
+tofmu: misfit =  2.0669     amu = 0.184577684E-03   min/max params:        1.28340,      5.76824
+tofmu: misfit =  2.0804     amu =-0.146455628       min/max params:        1.27219,      5.92248
+tofmu: misfit =  2.0667     amu =-0.245836982E-01   min/max params:        1.28112,      5.79663
+tofmu: misfit =  2.0667     amu =-0.221253283E-01   min/max params:        1.28134,      5.79386
+tofmu: misfit =  2.0667     amu =-0.199127953E-01   min/max params:        1.28154,      5.79135
+ Minimum tol from fminocc is at mu =  -2.2125328255478114E-002
+ and is =   2.0667152352065203     
+ using           11  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0649     amu =-0.221253283E-01   min/max params:        1.27384,      5.83482
+tofmu: misfit =  4.3313     amu = -1.02212533       min/max params:        1.10147,      6.23016
+tofmu: misfit =  2.6347     amu =  1.59590868       min/max params:        1.34988,      4.72058
+tofmu: misfit =  2.1378     amu = 0.595908640       min/max params:        1.30967,      5.35204
+tofmu: misfit =  2.1177     amu =-0.404091323       min/max params:        1.26895,      5.99963
+tofmu: misfit =  2.0659     amu = 0.568049456E-01   min/max params:        1.27770,      5.78770
+tofmu: misfit =  2.0651     amu =-0.215765250E-02   min/max params:        1.27476,      5.82337
+tofmu: misfit =  2.0664     amu =-0.168023349       min/max params:        1.26871,      5.90912
+tofmu: misfit =  2.0647     amu =-0.808953417E-01   min/max params:        1.27141,      5.86668
+tofmu: misfit =  2.0647     amu =-0.666077810E-01   min/max params:        1.27196,      5.85918
+tofmu: misfit =  2.0647     amu =-0.599470027E-01   min/max params:        1.27222,      5.85563
+tofmu: misfit =  2.0647     amu =-0.732685593E-01   min/max params:        1.27170,      5.86270
+ Minimum tol from fminocc is at mu =  -6.6607780962755672E-002
+ and is =   2.0647091048247477     
+ using           12  evaluations of function
+ Stepsize is =   0.11475691401222954     
+ Roughness is =    7.2849162473239852     
+  
+ Starting R.M.S. =    2.0647091048247477     
+ ** Iteration           15  **
+tofmu: misfit =  2.0684     amu =-0.666077810E-01   min/max params:        1.26497,      5.87823
+tofmu: misfit =  6.2378     amu = -1.06660778       min/max params:        0.54198,      7.56392
+tofmu: misfit =  5.3071     amu =  1.55142622       min/max params:        1.42808,      3.61778
+tofmu: misfit =  3.1551     amu = 0.551426187       min/max params:        1.34826,      4.93548
+tofmu: misfit =  2.2004     amu =-0.448573776       min/max params:        1.24865,      6.19525
+tofmu: misfit =  2.0631     amu =-0.175449553       min/max params:        1.25466,      5.98753
+tofmu: misfit =  2.0639     amu =-0.137882546       min/max params:        1.25784,      5.95176
+tofmu: misfit =  2.0630     amu =-0.192994508       min/max params:        1.25334,      6.00357
+tofmu: misfit =  2.0632     amu =-0.212293960       min/max params:        1.25200,      6.02072
+ Minimum tol from fminocc is at mu = -0.19299450845754246     
+ and is =   2.0630368349734396     
+ using            9  evaluations of function
+ Stepsize is =   0.11456064597331730     
+ Roughness is =    8.2488665747745156     
+  
+ Starting R.M.S. =    2.0630368349734396     
+ ** Iteration           16  **
+tofmu: misfit =  2.0670     amu =-0.192994508       min/max params:        1.26668,      5.89754
+tofmu: misfit =  7.2681     amu = -1.19299451       min/max params:       -0.08716,     10.25712
+tofmu: misfit =  5.3118     amu =  1.42503950       min/max params:        1.39532,      3.55516
+tofmu: misfit =  2.9149     amu = 0.425039460       min/max params:        1.32972,      4.95077
+tofmu: misfit =  2.6054     amu =-0.574960503       min/max params:        1.26149,      6.21065
+tofmu: misfit =  2.0691     amu =-0.130582501       min/max params:        1.27190,      5.82817
+tofmu: misfit =  2.0674     amu =-0.212293960       min/max params:        1.26523,      5.91778
+tofmu: misfit =  2.0672     amu =-0.173695057       min/max params:        1.26821,      5.87674
+ Minimum tol from fminocc is at mu = -0.19299450845754246     
+ and is =   2.0670423669256488     
+ using            8  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0635     amu =-0.192994508       min/max params:        1.26001,      5.95056
+tofmu: misfit =  4.9267     amu = -1.19299451       min/max params:        0.97262,      7.05313
+tofmu: misfit =  2.6308     amu =  1.42503950       min/max params:        1.32736,      4.77936
+tofmu: misfit =  2.1383     amu = 0.425039460       min/max params:        1.29153,      5.47717
+tofmu: misfit =  2.1374     amu =-0.574960503       min/max params:        1.25741,      6.10711
+tofmu: misfit =  2.0651     amu =-0.764117394E-01   min/max params:        1.26515,      5.88324
+tofmu: misfit =  2.0638     amu =-0.151650995       min/max params:        1.26169,      5.92792
+tofmu: misfit =  2.0634     amu =-0.223260691       min/max params:        1.25889,      5.96630
+tofmu: misfit =  2.0635     amu =-0.245586760       min/max params:        1.25814,      5.97747
+ Minimum tol from fminocc is at mu = -0.22326069089698983     
+ and is =   2.0634237639566493     
+ using            9  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0629     amu =-0.223260691       min/max params:        1.25612,      5.98493
+tofmu: misfit =  3.0178     amu = -1.22326069       min/max params:        1.24217,      6.14224
+tofmu: misfit =  2.1153     amu =  1.39477331       min/max params:        1.28986,      5.39643
+tofmu: misfit =  2.0713     amu = 0.394773278       min/max params:        1.27169,      5.75454
+tofmu: misfit =  2.0738     amu =-0.605226686       min/max params:        1.25599,      6.06003
+tofmu: misfit =  2.0636     amu =-0.765277485E-01   min/max params:        1.25924,      5.94344
+tofmu: misfit =  2.0629     amu =-0.273032319       min/max params:        1.25532,      5.99715
+tofmu: misfit =  2.0629     amu =-0.300335552       min/max params:        1.25496,      6.00348
+ Minimum tol from fminocc is at mu = -0.27303231943378498     
+ and is =   2.0628533943032092     
+ using            8  evaluations of function
+ Stepsize is =    7.8385731286597413E-002
+ Roughness is =    8.3364382524805603     
+  
+ Starting R.M.S. =    2.0628533943032092     
+ ** Iteration           17  **
+tofmu: misfit =  2.0621     amu =-0.273032319       min/max params:        1.25145,      6.00522
+tofmu: misfit =  7.3296     amu = -1.27303232       min/max params:        0.20648,      9.84596
+tofmu: misfit =  5.3392     amu =  1.34500169       min/max params:        1.39764,      3.62264
+tofmu: misfit =  2.9793     amu = 0.345001649       min/max params:        1.32138,      5.11153
+tofmu: misfit =  2.4704     amu =-0.654998314       min/max params:        1.23865,      6.29567
+tofmu: misfit =  2.0628     amu =-0.245729087       min/max params:        1.25376,      5.97803
+tofmu: misfit =  2.0617     amu =-0.300335552       min/max params:        1.24933,      6.03136
+tofmu: misfit =  2.0695     amu =-0.435804667       min/max params:        1.24228,      6.14709
+tofmu: misfit =  2.0612     amu =-0.344556190       min/max params:        1.24635,      6.07160
+tofmu: misfit =  2.0619     amu =-0.379011810       min/max params:        1.24446,      6.10124
+ Minimum tol from fminocc is at mu = -0.34455619041887109     
+ and is =   2.0612301474031258     
+ using           10  evaluations of function
+ Stepsize is =    6.0577223728575005E-002
+ Roughness is =    9.1275246012996512     
+  
+ Starting R.M.S. =    2.0612301474031258     
+ ** Iteration           18  **
+tofmu: misfit =  2.0662     amu =-0.344556190       min/max params:        1.24688,      6.03894
+tofmu: misfit =  7.3847     amu = -1.34455619       min/max params:        0.08030,      9.84539
+tofmu: misfit =  5.4452     amu =  1.27347781       min/max params:        1.37802,      3.60951
+tofmu: misfit =  3.2800     amu = 0.273477778       min/max params:        1.31156,      5.13798
+tofmu: misfit =  2.3859     amu =-0.726522185       min/max params:        1.20420,      6.34454
+tofmu: misfit =  2.0627     amu =-0.386137412       min/max params:        1.24357,      6.07944
+tofmu: misfit =  2.0614     amu =-0.424751154       min/max params:        1.24087,      6.11514
+tofmu: misfit =  2.0683     amu =-0.540017426       min/max params:        1.23551,      6.21199
+tofmu: misfit =  2.0612     amu =-0.467226270       min/max params:        1.23838,      6.15243
+ Minimum tol from fminocc is at mu = -0.46722626985228899     
+ and is =   2.0611695779274259     
+ using            9  evaluations of function
+ Stepsize is =   0.11246369772141167     
+ Roughness is =    10.017885121044575     
+  
+ Starting R.M.S. =    2.0611695779274259     
+ ** Iteration           19  **
+tofmu: misfit =  2.0616     amu =-0.467226270       min/max params:        1.24106,      6.09030
+tofmu: misfit =  7.8712     amu = -1.46722627       min/max params:       -2.10282,     14.08895
+tofmu: misfit =  5.3809     amu =  1.15080774       min/max params:        1.35772,      3.62218
+tofmu: misfit =  3.1138     amu = 0.150807699       min/max params:        1.29859,      5.21414
+tofmu: misfit =  3.5566     amu =-0.849192265       min/max params:        1.06330,      6.43558
+tofmu: misfit =  2.0823     amu =-0.309768075       min/max params:        1.25416,      5.91275
+tofmu: misfit =  2.0628     amu =-0.407725622       min/max params:        1.24551,      6.02634
+tofmu: misfit =  2.0657     amu =-0.513948898       min/max params:        1.23815,      6.13815
+ Minimum tol from fminocc is at mu = -0.46722626985228899     
+ and is =   2.0616237257073493     
+ using            8  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0607     amu =-0.467226270       min/max params:        1.23972,      6.12136
+tofmu: misfit =  6.2694     amu = -1.46722627       min/max params:        0.63320,      9.06690
+tofmu: misfit =  2.5845     amu =  1.15080774       min/max params:        1.29805,      4.88731
+tofmu: misfit =  2.1519     amu = 0.150807699       min/max params:        1.26849,      5.68329
+tofmu: misfit =  2.2871     amu =-0.849192265       min/max params:        1.24052,      6.29400
+tofmu: misfit =  2.0664     amu =-0.257894172       min/max params:        1.24877,      6.00021
+tofmu: misfit =  2.0612     amu =-0.408936846       min/max params:        1.24190,      6.09005
+tofmu: misfit =  2.0609     amu =-0.513948898       min/max params:        1.23827,      6.14529
+ Minimum tol from fminocc is at mu = -0.46722626985228899     
+ and is =   2.0607073883132943     
+ using            8  evaluations of function
+ Stepsize is =    8.0815876411106130E-002
+ Roughness is =    9.9913120092156795     
+  
+ Starting R.M.S. =    2.0607073883132943     
+ ** Iteration           20  **
+tofmu: misfit =  2.0660     amu =-0.467226270       min/max params:        1.23589,      6.13827
+tofmu: misfit =  8.2245     amu = -1.46722627       min/max params:       -1.24332,     12.86911
+tofmu: misfit =  5.2969     amu =  1.15080774       min/max params:        1.36010,      3.66525
+tofmu: misfit =  3.1983     amu = 0.150807699       min/max params:        1.29779,      5.25915
+tofmu: misfit =  3.5777     amu =-0.849192265       min/max params:        0.99455,      6.50924
+tofmu: misfit =  2.0978     amu =-0.316431991       min/max params:        1.24888,      5.96143
+tofmu: misfit =  2.0668     amu =-0.420503642       min/max params:        1.23941,      6.08567
+tofmu: misfit =  2.0726     amu =-0.513948898       min/max params:        1.23298,      6.18906
+ Minimum tol from fminocc is at mu = -0.46722626985228899     
+ and is =   2.0659837180850271     
+ using            8  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0607     amu =-0.467226270       min/max params:        1.23781,      6.12982
+tofmu: misfit =  6.0581     amu = -1.46722627       min/max params:        0.52007,      8.53860
+tofmu: misfit =  2.5627     amu =  1.15080774       min/max params:        1.29991,      4.89331
+tofmu: misfit =  2.1601     amu = 0.150807699       min/max params:        1.26876,      5.69026
+tofmu: misfit =  2.2866     amu =-0.849192265       min/max params:        1.21351,      6.31530
+tofmu: misfit =  2.0673     amu =-0.265079550       min/max params:        1.24693,      6.00878
+tofmu: misfit =  2.0611     amu =-0.419215923       min/max params:        1.23962,      6.10278
+tofmu: misfit =  2.0610     amu =-0.513948898       min/max params:        1.23635,      6.15521
+ Minimum tol from fminocc is at mu = -0.46722626985228899     
+ and is =   2.0607146202660558     
+ using            8  evaluations of function
+ Divergence problems, cutting step size
+tofmu: misfit =  2.0604     amu =-0.467226270       min/max params:        1.23876,      6.12559
+tofmu: misfit =  3.6608     amu = -1.46722627       min/max params:        0.97627,      6.41020
+tofmu: misfit =  2.1031     amu =  1.15080774       min/max params:        1.26982,      5.50733
+tofmu: misfit =  2.0703     amu = 0.150807699       min/max params:        1.25424,      5.90581
+tofmu: misfit =  2.0809     amu =-0.849192265       min/max params:        1.24004,      6.21833
+tofmu: misfit =  2.0618     amu =-0.272835743       min/max params:        1.24312,      6.06758
+tofmu: misfit =  2.0604     amu =-0.533093804       min/max params:        1.23779,      6.14337
+tofmu: misfit =  2.0605     amu =-0.586403185       min/max params:        1.23728,      6.15715
+ Minimum tol from fminocc is at mu = -0.53309380388012118     
+ and is =   2.0603512694995527     
+ using            8  evaluations of function
+ Stepsize is =    4.9195454957031794E-002
+ Roughness is =    10.429022055399656     
+  
+  Stop on maximum iterations

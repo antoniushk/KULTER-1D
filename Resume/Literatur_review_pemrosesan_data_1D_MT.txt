@@ -1,0 +1,545 @@
+
+Claude
+Shared by Antonius. This is a copy of a chat between Claude and Antonius. Content may include unverified or unsafe content that does not represent the views of Anthropic. Shared snapshot may contain attachments and data not displayed here.
+bantu saya procesing 1D penglohana data MT cari base on paper atau jurnal caranya gimana? deadline besok jam 23.59 dan saya harus selesai kalau bisa jam 6 sore besok!! tolong cari kan semuannya dahul!!! jadi sekarang yang harus di lakukan adalah literatur review duluh!! ohiya ini saya tidak pakai sofwaret ya jadi ini base on ngoding lah istilahnya!! paham kan maksudnya!
+
+Siap, paham maksudnya: pengolahan MT 1D murni lewat coding. Saya cari dulu literaturnya.
+
+
+Searched the web
+Searched the web
+Paham, jadi kamu mau pipeline 1D MT yang dikerjakan lewat coding, bukan pakai software jadi. Ini hasil pencarian literatur tahap pertama.
+
+Alur kerja yang muncul dari literatur
+Dari paper-paper yang saya temukan, alur 1D MT berbasis kode kira-kira begini:
+
+Time series ke impedansi. Data mentah dipotong per segmen, diubah ke domain frekuensi, lalu impedansi diestimasi dengan metode robust atau remote reference.
+QC dan seleksi data. Segmen yang noisy dibuang berdasarkan koherensi, polarisasi, atau jarak Mahalanobis.
+Rho apparent dan fase, lalu koreksi static shift kalau perlu.
+Inversi 1D (Bostick untuk model cepat, Occam untuk model smooth).
+Interpretasi dan evaluasi misfit (RMS).
+Referensi per tahap
+Tahap 1 dan 2: pengolahan time series
+
+SigMT adalah paket Python yang memproses data MT mentah menjadi estimasi impedansi dan tipper secara otomatis, dengan seleksi data berbasis Mahalanobis dan estimasi impedansi robust. Sitasi: Ajithabh & Patro (2023), Computers & Geosciences, 171, 105270, https://doi.org/10.1016/j.cageo.2022.105270. Catatan: SigMT hanya mendukung format Metronix (.ats). 
+pypi
+pypi
+Aurora adalah implementasi Python dari EMTF yang mengestimasi transfer function single station dan remote reference secara robust dari time series MT. Sitasi: Kappler et al. (2024), Journal of Open Source Software, https://doi.org/10.21105/joss.06832. Ini kodenya terbuka, jadi bisa kamu bedah logikanya untuk ditulis ulang. 
+usgs
+Untuk landasan teori noise, Chen et al. (2023) menjelaskan bahwa metode peredam gangguan umumnya berbasis algoritma statistik robust, remote reference, analisis multistasiun, atau modifikasi time series. Sitasi: Frontiers in Earth Science, https://doi.org/10.3389/feart.2023.1230071. 
+frontiersin
+Zhan et al. (2023) menyatakan remote reference maupun estimasi robust tidak bisa menyelesaikan semua masalah pada pengolahan data MT. Ini bagus untuk argumen “kenapa butuh pendekatan tambahan”. Sitasi: Frontiers in Earth Science, https://doi.org/10.3389/feart.2023.1183188. 
+frontiersin
+Tahap 4: inversi 1D
+
+Fondasi wajib: Constable et al. (1987), Geophysics, 52(3), 289-300. Metode ini melinierkan masalah forward di sekitar model awal, lalu menyelesaikan langsung untuk model yang diinginkan, bukan untuk koreksi modelnya. Ini paper lama, tapi memang rujukan dasar algoritmanya. 
+mtnet
+Referensi kode: ada repositori Matlab “toy Occam inversion” untuk 1D MT yang memakai data contoh dari Tabel 5 paper Constable 1987 (dong-hao/occam1dmt di GitHub). Cocok sebagai pembanding hasil kodemu. Di Python, MTpy punya wrapper untuk Occam1D karya Kerry Key. 
+blitzz
+readthedocs
+Tutorial SEG Wiki tentang inversi nonlinier 1D MT menjelaskan formulasi sebagai masalah optimasi dengan regularisasi, memakai SimPEG di Python. Bagus untuk memahami struktur kodenya. 
+seg
+Terbaru (≤5 tahun): Goyes-Peñafiel et al. (2024/2025), IEEE Geoscience and Remote Sensing Letters, art. 7503005. Mereka mengusulkan inversi unsupervised berpanduan fisika untuk model 1D MT. Cocok kalau dosen suka sentuhan metode modern. 
+kfupm
+Ada juga paper Remote Sensing 2024, 16(1), 62 berjudul “Physics-Informed Deep Learning Inversion with Application to Noisy Magnetotelluric Measurements”, https://doi.org/10.3390/rs16010062. Nama penulisnya belum muncul di hasil, jadi buka dulu halaman paper-nya sebelum menulis sitasi.
+Static shift
+
+Pellerin & Hohmann (1990) mengoreksi static shift dengan menggeser kurva MT berdasarkan inversi 1D data TEM. Sitasi: Geophysics, 55(9), 1242-1250. Klasik, tapi dasar teorinya. 
+researchgate
+Yang harus kamu cek sendiri
+Status Q1/Q2: saya tidak bisa memastikannya dari hasil pencarian. Cek per jurnal di Scimago (scimagojr.com), karena kuartil berubah tiap tahun dan bisa beda per kategori.
+Batas 5 tahun: yang masuk 2021-2026 adalah Ajithabh & Patro (2023), Chen et al. (2023), Zhan et al. (2023), Kappler et al. (2024), dan Goyes-Peñafiel et al. Constable (1987) dan Pellerin & Hohmann (1990) saya sertakan sebagai fondasi teori. Tanyakan ke dosen apakah boleh dipakai.
+JOSS (Kappler et al.): belum saya pastikan terindeks Scopus. Cek dulu.
+Saya belum menemukan paper Q1/Q2 ≤5 tahun yang spesifik membahas Occam 1D dengan kasus Indonesia. Kalau tugasmu perlu konteks problem nyata (misalnya panas bumi), saya bisa cari lagi.
+Rencana sampai jam 18.00
+Sekarang sampai siang: pilih satu jalur kode (menulis sendiri dari Aurora/SigMT sebagai acuan, atau Occam dari repo toy sebagai pembanding).
+Siang: uji forward dan inversi pada data sintetik, lalu data asli.
+Sore: plot, hitung RMS, tulis.
+Satu pertanyaan penting supaya langkah berikutnya tepat: data yang kamu punya itu time series mentah atau sudah berupa file .edi (impedansi/rho-fase)? Kalau sudah .edi, tahap 1 dan 2 bisa dilewati dan kita langsung fokus ke inversi 1D.
+
+Files hidden when shared
+sabar duluh
+
+ini ada file "data.zip" itu data MT saya format edi ada 10 titik, terus yang "trial_datashifa.zip" itu dari teman saya dimana itu pengolahannya untuk 1D nya maksudnya itu dari teman saya!!!
+
+coba kamu cek semuanya dan saya coba download paper yang udh kamu rekomendasikan ke saya!!
+
+
+Ran 4 commands, read a file
+Ran 4 commands, read a file
+Lagi mengecek isi file kamu. EDI kamu ternyata format spektra mentah (cross-spectra 7 kanal, 96 frekuensi), bukan file impedansi. Sekarang saya bedah kode temanmu.
+
+
+Ran 6 commands
+Ran 6 commands
+Lagi merangkum kualitas 10 stasiunmu. Ada blok frekuensi yang isinya nol semua (singular), jadi saya lewati dulu.
+
+
+Ran a command
+Ran a command
+Datamu dan data temanmu ternyata dataset yang sama. Saya sudah cek semuanya dan membuktikannya lewat hitungan sendiri.
+
+1. Isi data.zip milikmu
+Ada 10 file EDI (MT1 sampai MT10) dari proyek KULTER2026 di dekat Ponorogo, hasil alat Phoenix MTU-5C yang diproses EMpower.
+Isinya spektra mentah, bukan impedansi. Tiap file berisi matriks cross-spectra 7x7 pada 96 frekuensi (10 kHz sampai sekitar 0,0007 Hz). Jadi tahap “spektra ke impedansi (Z)” harus kamu kerjakan sendiri lewat kode.
+Kanal referensi (RX, RY) ternyata kanal magnetik lokal yang sama, jadi ini single-station dan bukan remote reference sungguhan. Header juga menulis fine robust = NONE.
+Tiap stasiun punya 1 sampai 8 blok frekuensi yang isinya nol (frekuensi terendah). Stasiun MT9 hanya punya 92 frekuensi.
+Sekitar 26 sampai 48 dari 96 frekuensi punya jumlah stacking kecil (<30). Ini harus disaring saat QC.
+2. Hasil verifikasi saya
+Saya menulis fungsi sendiri: Z = S_EH · inv(S_HH) dari matriks spektra. Hasilnya cocok persis dengan Z di EDI temanmu. Contohnya MT1 pada 10 kHz, Zxy = 502,61 + 1699,68i di kedua sumber. Koordinat, tanggal, dan operator juga sama.
+
+Artinya EDI temanmu adalah data yang sama, hanya sudah dikonversi ke format impedansi lewat MTpy dan dipotong ke 54 frekuensi (≥1 Hz). Di sisi lain, ini berarti konversi spektra ke Z milikmu sudah valid dan siap dijadikan tahap pertama pipeline.
+
+3. Alur kode temanmu
+Pre-processing. Zxy dan Zyx diganti dengan Zssq (invarian sum-of-squares), lalu data dipotong ke f > 1 Hz (AMT) dan dihitung kedalaman penetrasinya (DOP).
+Inversi 1D. Occam1D dijalankan lewat PyGMI, yaitu software GUI. Notebook hanya membaca logfile, memilih iterasi “elbow”, dan memplot.
+Pasca-inversi. Hasilnya diekstrak per kedalaman, lalu dibuat peta horizontal dan penampang vertikal.
+Beberapa catatan kritisnya:
+
+Inti inversinya bukan hasil ngoding, padahal tugasmu berbasis kode. Bagian ini harus kamu buat sendiri.
+Zssq bukan koreksi static shift. Itu hanya invarian rotasi, jadi jangan ditulis sebagai koreksi static shift.
+Pemilihan “elbow” memakai jarak ke titik asal dari nilai ternormalisasi, itu heuristik dan bukan kurvatur L-curve yang sebenarnya.
+Beberapa model akhirnya tidak mencapai target RMS = 1. MT1 dan MT2 sekitar 2,4 sampai 2,5 dan MT9 sekitar 3,6. Hanya MT3, MT6, dan MT7 yang mendekati 1.
+Resistivitas model sampai 10^5 hingga 6,9×10^5 Ω·m (MT4, MT6, dan lainnya) mencurigakan. Kemungkinan itu artefak di kedalaman yang tidak terkendala data.
+4. Seberapa “1D” data kamu
+Indikatornya rasio (|Zxx|+|Zyy|) / (|Zxy|+|Zyx|) pada f ≥ 1 Hz. Makin kecil, makin mendekati 1D.
+
+Stasiun	Rasio 1D	Rho XY / Rho YX (Ω·m, median)
+MT1, MT3, MT4, MT6, MT7	0,17 sampai 0,24	cukup mirip, kecuali MT3 dan MT6
+MT5	0,28	42 / 14
+MT8	0,43	99 / 85
+MT10	0,48	80 / 188
+MT9	0,50	12 / 325
+MT2	0,61	928 / 2589
+MT2, MT9, dan MT10 paling jauh dari 1D, jadi untuk titik-titik itu tulis di bagian keterbatasan bahwa 1D hanya pendekatan. Ini juga sesuai preferensimu untuk argumen berbasis masalah nyata.
+
+5. Catatan penting soal integritas akademik
+Karena dataset kamu sama dengan temanmu, hasil akhirnya bisa terlihat mirip. Gunakan notebook temanmu hanya untuk memahami alur dan sebagai pembanding hasil. Tulis kode inversimu sendiri (dan kalau memakai ide atau bagian kodenya, sebutkan). Itu juga yang paling aman untuk nilai A-mu.
+
+Rencana kode (tanpa software)
+Spektra ke Z (sudah terbukti cocok).
+QC: buang blok nol, stacking kecil, dan koherensi rendah.
+Rho apparent dan fase, lalu pilih mode (TE, TM, DET, atau Zssq).
+Forward 1D (rekursi impedansi berlapis) dan Occam sendiri di NumPy.
+Validasi dengan model sintetik dan data Constable 1987, lalu jalankan di 10 stasiun.
+Plot L-curve, model 1D, dan penampang.
+Satu hal yang menentukan langkah berikutnya: tugasmu meminta inversi pakai mode apa (TE/TM/DET/Zssq) dan band apa (AMT ≥1 Hz atau semua frekuensi)? Begitu ini jelas, saya langsung buatkan kode Python lengkapnya dengan komentar yang mudah kamu pahami. Kamu bisa lanjut mengunduh paper-paper tadi sambil menunggu.
+
+Files hidden when shared
+nah ini saya masih belum tau, dan teman saya ini agak sulit di hubungi terus untuk ke dosen juga udh lewat atau habis buat jatah bertanya jadi gimana dong? coba kamu analisis dahulu!! sebelum kita mengerjakan tugasnya! terus untuk pengolahan kalau bisa indie (yang jarang terderangar atau terbaru untuk pengolahannya) itu salah satu syarat tidak wajib tapi kalau di kerjakan dapat nilai plush!! gimana menurut mu!!
+
+Oke, saya analisis dulu supaya pilihan mode dan band-nya berdasar data, bukan tebakan. Saya hitung koherensi, dimensi (phase tensor), dan kecocokan antar mode.
+
+
+Ran a command, searched the web
+Ran a command, searched the web
+Karena dosen dan temanmu sulit dihubungi, saya pilihkan mode dan band berdasarkan kualitas data kamu sendiri. Pilihan itu nanti bisa kamu pertahankan di laporan dengan bukti. Saya hitung koherensi, jumlah stacking, dan dimensi data (phase tensor) di semua stasiun.
+
+Band: pakai 1 Hz sampai 10 kHz
+Band	Koherensi median (Ex, Ey)	Stacking median	Titik dengan ellipticity < 0,15
+100 Hz sampai 10 kHz	0,95 dan 0,97	456	32%
+1 sampai 100 Hz	0,83 dan 0,83	225	3%
+0,01 sampai 1 Hz	0,63 dan 0,69	22	4%
+di bawah 0,01 Hz	0,98 dan 0,95	2	1%
+Di bawah 1 Hz, datanya jelek. Stacking tinggal puluhan dan koherensinya turun.
+Koherensi 0,98 di bawah 0,01 Hz kemungkinan besar tidak asli. Stacking hanya 2 membuat estimasi koherensi terlihat tinggi secara palsu, jadi jangan dipercaya.
+Batas 1 Hz juga sama dengan yang dipakai temanmu, jadi hasilnya bisa dibandingkan.
+Keputusan: band utama 1 Hz sampai 10 kHz (54 frekuensi). Di laporan, tulis alasannya dengan angka koherensi dan stacking di atas.
+
+Mode: pakai determinan (DET) sebagai utama
+Alasannya tidak ada arah strike yang kita ketahui, sedangkan TE dan TM bergantung pada arah itu. DET tidak bergantung pada rotasi, jadi tidak perlu tebak arah. Sebagai pengecekan, XY dan YX tetap dijalankan sebagai pembanding.
+
+Perbedaan XY dan YX di datamu cukup besar:
+
+MT9 paling ekstrem. Rho XY dan YX beda sekitar 1,45 dekade, dan rasio DET terhadap XY sekitar 6.
+MT5, MT2, MT8, dan MT10 juga beda 0,4 sampai 0,5 dekade.
+MT1, MT6, dan MT7 paling konsisten.
+Tidak ada mode yang pasti benar untuk semua titik, jadi memakai tiga mode (DET, XY, YX) dan melaporkan selisihnya justru jadi kekuatan laporan. Kalau soal tugasmu atau modul praktikum menyebut TE, TM, atau determinan, ikuti itu. Cek soal dan slide dulu karena itu lebih berharga daripada bertanya ke dosen. Kodenya nanti saya buat dengan saklar mode dan band, jadi ganti pilihan cuma satu baris.
+
+Seberapa 1D datamu
+Ini temuan penting dan bagus untuk argumen “masalah nyata”. Bahkan di band terbaik, hanya 32% titik yang benar-benar mendekati 1D. Di 1 sampai 100 Hz hanya 3%.
+
+Phase tensor memang dirancang untuk menilai dimensi tanpa asumsi apa pun dan tidak terpengaruh distorsi galvanik. Untuk struktur 1D, phase tensor-nya cuma satu nilai fase yang sama dengan fase impedansi 1D (Caldwell et al., 2004). Ambang 0,15 saya pilih sendiri sebagai patokan kasar, bukan angka baku.
+
+Caldwell, T. G., Bibby, H. M., & Brown, C. (2004). The magnetotelluric phase tensor. Geophysical Journal International, 158(2), 457-469. https://doi.org/10.1111/j.1365-246X.2004.02281.x (lebih dari 5 tahun, jadi pakai sebagai fondasi teori dan konfirmasi ke dosen kalau diperlukan).
+
+Soal nilai plus (metode “indie”)
+Batasannya: kamu hanya punya spektra rata-rata, bukan time series mentah. Jadi metode berbasis segmen waktu seperti SigMT tidak bisa dipakai. Opsi yang realistis untuk dikerjakan sebelum jam 18.00:
+
+Inversi 1D yang sadar dimensi (rekomendasi utama). Error data diperbesar di frekuensi yang menurut phase tensor tidak 1D. Murni berbasis datamu, ada rujukan terverifikasi, dan mudah dijelaskan saat ditanya dosen.
+Ketidakpastian model lewat MCMC. Bukan satu model saja, tapi pita ketidakpastian resistivitas terhadap kedalaman. Nilai tambahnya besar, tapi lebih berisiko. Kerjakan hanya kalau Occam dasar sudah selesai dan tervalidasi.
+Inversi diferensiabel (autodiff) ala Goyes-Peñafiel dkk. di IEEE GRSL. Saya tidak sarankan untuk besok karena berisiko.
+Saran saya jangan menambah metode yang tidak bisa kamu jelaskan sendiri. Nilai A lebih aman dari satu metode tambahan yang paham betul daripada tiga yang setengah paham.
+
+Urutan kerja berikutnya
+Kode dasar: spektra ke Z, QC, rho dan fase (sudah terbukti cocok dengan data temanmu).
+Forward 1D dan Occam sendiri, divalidasi dulu pada data sintetik.
+Jalankan 10 stasiun dengan DET, XY, YX.
+Tambahan nomor 1, lalu nomor 2 kalau waktu cukup.
+Kalau kamu setuju dengan keputusan band 1 Hz sampai 10 kHz dan mode DET sebagai utama, langkah berikutnya saya mulai menulis kode dasarnya.
+
+sebelum kerjakan, coba kamu jelaskan ke saya apa saja sih yang saya pertanyakan, datanya apa, dari awal chat hingga chat ini! supaya kita 1 pemahanan!!
+
+Oke, ini rekap dari awal sampai sekarang supaya kita satu pemahaman. Kalau ada yang salah, koreksi saja.
+
+1. Tugasmu
+Kamu harus melakukan pengolahan data magnetotellurik (MT) 1D.
+Pengerjaannya lewat coding, tanpa software jadi.
+Deadline besok jam 23.59, dan kamu ingin selesai sekitar jam 18.00.
+Kamu minta literatur review dulu sebelum mengerjakan.
+Kamu ambisius untuk nilai A, jadi ingin hasil yang argumentasinya kuat dan berdasar masalah nyata.
+2. Yang sudah saya kerjakan soal literatur
+Saya mencari rujukan untuk alur kerja ini: time series ke impedansi, QC data, rho dan fase, lalu inversi 1D. Hasilnya antara lain:
+
+Pengolahan data: SigMT (Ajithabh & Patro, 2023), Aurora (Kappler et al., 2024), Chen et al. (2023), dan Zhan et al. (2023).
+Inversi 1D: Constable et al. (1987) untuk metode Occam, dan Goyes-Peñafiel et al. untuk inversi modern.
+Static shift: Pellerin & Hohmann (1990).
+Phase tensor: Caldwell et al. (2004), ini ditambahkan belakangan untuk menilai dimensi data.
+Dua hal yang perlu kamu cek sendiri. Status Q1/Q2 belum bisa saya pastikan, jadi cek di Scimago. Beberapa paper (Constable 1987, Pellerin 1990, Caldwell 2004) lebih dari 5 tahun, jadi anggap sebagai fondasi teori dan konfirmasi dengan aturan tugasmu. Kamu bilang akan mengunduh paper-paper itu sendiri.
+
+3. Data yang kamu kirim
+data.zip (punyamu)
+
+10 titik (MT1 sampai MT10) dekat Ponorogo, alat Phoenix MTU-5C, proyek KULTER2026.
+Formatnya EDI, tapi isinya spektra mentah (matriks cross-spectra 7x7 pada 96 frekuensi), bukan impedansi.
+Jadi langkah “spektra menjadi impedansi Z” harus kamu kerjakan sendiri lewat kode.
+trial_datashifa.zip (dari temanmu)
+
+Itu dataset yang sama dengan punyamu (koordinat, tanggal, dan operator sama). Saya buktikan dengan menghitung Z sendiri dari spektramu, dan hasilnya cocok persis dengan Z di file temanmu.
+Temanmu memakai Zssq, memotong data di atas 1 Hz, lalu menjalankan Occam1D lewat PyGMI (software), jadi bagian inversi intinya bukan hasil ngoding.
+Catatan kritis dari saya: Zssq bukan koreksi static shift, pemilihan model terbaiknya heuristik, beberapa stasiun tidak mencapai RMS = 1, dan ada resistivitas yang tidak masuk akal (sampai ratusan ribu Ω·m).
+Karena datanya sama, pakai file temanmu untuk memahami alur dan pembanding saja, jangan disalin. Tulis kode inversimu sendiri.
+
+4. Kebingungan yang kamu sebut
+Kamu belum tahu tugasmu meminta mode apa (TE, TM, determinan, atau Zssq) dan band apa (hanya AMT di atas 1 Hz atau semua frekuensi). Temanmu sulit dihubungi dan jatah bertanya ke dosen sudah habis.
+
+Karena itu saya menganalisis datamu langsung sebagai dasar keputusan.
+
+5. Hasil analisis dan keputusan sementara
+Band: 1 Hz sampai 10 kHz (54 frekuensi). Di bawah 1 Hz stacking sedikit dan koherensinya turun, jadi tidak bisa diandalkan.
+Mode utama: determinan (DET), karena tidak butuh arah strike. XY dan YX tetap dijalankan sebagai pembanding.
+Temuan penting: datamu tidak benar-benar 1D. Bahkan di band terbaik hanya sekitar 32% titik yang mendekati 1D. MT9 paling ekstrem, dan MT1, MT6, MT7 paling baik. Ini jadi argumen “masalah nyata” di laporanmu.
+Saran kalau soalnya menyebut mode tertentu: ikuti soal. Kodenya nanti punya saklar mode dan band, jadi gampang diganti.
+6. Soal nilai plus
+Kamu bilang metode “indie” atau terbaru itu nilai tambah, bukan kewajiban. Pilihan yang saya sarankan:
+
+Inversi 1D yang sadar dimensi (bobot data diatur berdasarkan phase tensor), rekomendasi utama.
+Ketidakpastian model lewat MCMC, hanya kalau waktu cukup.
+Inversi diferensiabel, tidak disarankan untuk besok.
+7. Yang belum dilakukan dan belum diputuskan
+Belum ada kode yang saya tulis untuk tugasmu. Semua tadi masih analisis.
+Paper belum saya baca penuh. Saya baru melihat abstrak dan halaman ringkasannya.
+Keputusan band, mode, dan metode plus masih usulan saya, belum kamu setujui.
+Kalau rekap ini sudah sesuai dan kamu setuju dengan band 1 Hz sampai 10 kHz, mode DET sebagai utama, dan metode plus nomor 1, kabari saya. Saya langsung mulai menulis kode dasarnya.
+
+Files hidden when shared
+Tugasmu = benar
+2. Yang sudah saya kerjakan soal literatur = aman ini udh saya cari kok status nya
+3. Data yang kamu kirim = benar datanya 10 titik, dan tempat pengambilannya benar, sama format EDi benar, tapi isinya saya gak tau soalnya saya gak tau terkait pengolahan MT jadi ini base on AI di bancmark dengan Literatur paham (ibarat saya ini benar" buta pengolaha dan dasar teori MT jadi ini saya kerjakan melalaui AI yang saya suruh bancmark kembali dengan literatur)
+trial_datashifa.zip (dari temanmu) = ini saya kurang tau, tapi coba kalau bisa kita base one coding ya supaya indie (maksudnya "indie" itu beda sendiri tapi ini data 1 angaktan yang diolah bersama" dan yang teman saya dia ketua pengolahan 1D mt jadi kalau bisa kita coba juga di pygmi ya" tapi kita juga harus lakukan indie ya beda sendiri karena kata dose penanggung jawab kalau pengolahannya beda sendiri nilai nya akan lebih tinggi)
+4. Kebingungan yang kamu sebut = tolong bantu ya analisis dari kamu, orang expert dan dari literatur review
+5. Hasil analisis dan keputusan sementara = ini saya kurang tau ini tolong bantu analisis ya dari kamu, orang expert dan dari literatur review
+
+Mode utama: determinan (DET), karena tidak butuh arah strike. XY dan YX tetap dijalankan sebagai pembanding.
+Temuan penting: datamu tidak benar-benar 1D. Bahkan di band terbaik hanya sekitar 32% titik yang mendekati 1D. MT9 paling ekstrem, dan MT1, MT6, MT7 paling baik. Ini jadi argumen “masalah nyata” di laporanmu.
+Saran kalau soalnya menyebut mode tertentu: ikuti soal. Kodenya nanti punya saklar mode dan band, jadi gampang diganti.
+lakukan untuk semua mode aja!! tapi gak barengan gitu jadi tersendiri-sendiri
+
+Soal nilai plus
+Kamu bilang metode “indie” atau terbaru itu nilai tambah, bukan kewajiban. Pilihan yang saya sarankan:
+
+Inversi 1D yang sadar dimensi (bobot data diatur berdasarkan phase tensor), rekomendasi utama.
+Ketidakpastian model lewat MCMC, hanya kalau waktu cukup.
+Inversi diferensiabel, tidak disarankan untuk besok.
+ini maksudnya bukan metode tapi kiasan dari dosen penanggung jawab kulter jadi maksudnya itu metode yang baru atau beda sendiri gitu loh!!!
+
+Yang belum dilakukan dan belum diputuskan
+Belum ada kode yang saya tulis untuk tugasmu. Semua tadi masih analisis. = coba kamu analisi lagi ulang dari tulisan" yang saya berikan ini
+Paper belum saya baca penuh. Saya baru melihat abstrak dan halaman ringkasannya. = nanti saya akan berikan file zip yang berisi paper" yang kamu berikan dan kemungkinan ada beberapa paper yang gak keikut download karena berbayar
+Keputusan band, mode, dan metode plus masih usulan saya, belum kamu setujui. = ini berdasarkan tulisan" diatas yang saya berikan!
+itu jawaban saya coba kamu analisisi kembali secara detail dan pahami terus kamu jelaskna kemabli ke saya apa yang sudah kamu analisis! setelah itu kalau apa yang kamu pahami dan yang saya mau itu cocok nanti saya akan berikan "acc" SEBAGI MEMULAI PENGERJAAN AWAL!
+
+Saya sudah baca ulang jawabanmu satu per satu. Di bawah ini yang saya tangkap, lalu rencana yang menurut saya cocok. Kalau ada yang meleset, koreksi dulu sebelum kamu kasih “acc”. Belum ada kode yang saya tulis.
+
+1. Inti yang saya tangkap
+Kamu belum punya dasar MT, jadi pengerjaan ini bergantung pada saya dan literatur. Saya akan menjelaskan tiap langkah dengan bahasa sederhana supaya kamu bisa membela hasilnya kalau ditanya.
+Seluruh angkatan memakai data yang sama. Temanmu ketua pengolahan 1D dan memakai PyGMI.
+Dosen bilang pengolahan yang beda sendiri nilainya lebih tinggi. Jadi “indie” artinya pendekatan yang berbeda dari teman-temanmu, bukan nama metode tertentu.
+2. Jawabanmu dan cara saya menangkapnya
+Poin	Pemahaman saya	Konsekuensi
+Tugas	Pengolahan MT 1D, coding, deadline besok 23.59 (target 18.00)	tetap
+Literatur	Status Q1/Q2 sudah kamu cek	Saya anggap daftar itu aman
+Isi data	Kamu tidak tahu isinya, kamu bergantung pada saya	Saya jelaskan tiap langkah, dan kode diberi komentar sederhana
+File teman	Kamu ingin coding sendiri, tapi juga mencoba PyGMI	Dua jalur paralel
+Mode	Jalankan semua mode, tapi terpisah, bukan digabung	Pilihan DET sebagai utama gugur. Tiap mode punya hasil lengkap sendiri
+Metode plus	“Beda sendiri dari yang lain”	Saya susun ulang pilihan plusnya (bagian 4)
+Paper	Kamu kirim zip, sebagian berbayar tidak ikut	Saya hanya menyitir yang benar-benar saya baca. Yang berbayar tidak akan saya klaim sudah dibaca
+Keputusan band dan metode	Saya yang menentukan berdasar analisis dan literatur	Saya usulkan di bawah. Kamu cukup acc
+3. Rencana kerja
+Jalur A: kode sendiri (inti tugas)
+
+Baca spektra EDI-mu, hitung impedansi Z sendiri. Ini sudah saya buktikan cocok dengan data temanmu.
+QC data: buang blok nol dan frekuensi dengan stacking atau koherensi rendah.
+Hitung resistivitas semu dan fase.
+Tulis forward 1D dan inversi Occam sendiri di NumPy. Validasi dulu pada model sintetik yang jawabannya diketahui.
+Jalankan di 10 stasiun.
+Jalur B: PyGMI (pembanding)
+
+Saya bisa menyiapkan file input Occam1D dengan format yang sama seperti punya temanmu, tapi PyGMI harus kamu jalankan sendiri di laptopmu. Saya tidak bisa menjalankan GUI-nya di sini.
+Hasil PyGMI dipakai sebagai pembanding. Kalau kodemu dan PyGMI memberi model mirip, itu bukti validasi yang kuat. Sebutkan di laporan bahwa pembandingnya hasil PyGMI tim.
+Empat mode, masing-masing terpisah (folder dan hasil sendiri-sendiri):
+
+Mode	Artinya sederhana
+XY	Komponen impedansi Ex terhadap Hy (di file temanmu dilabeli “TE”)
+YX	Komponen Ey terhadap Hx
+DET	Gabungan seluruh tensor lewat determinan, tidak bergantung arah
+Zssq	Gabungan kuadrat seluruh tensor, dipakai temanmu
+Mode Zssq juga memungkinkan perbandingan langsung dengan hasil PyGMI temanmu, karena itu yang dia pakai.
+
+Band utama: 1 Hz sampai 10 kHz (54 frekuensi), karena di bawah 1 Hz stacking sedikit dan koherensinya turun. Ini tetap berupa saklar, jadi bisa diganti.
+
+4. Soal “beda sendiri”
+Kemungkinan besar teman-temanmu akan mengikuti alur yang mirip dengan temanmu: Z dari MTpy, Zssq, Occam lewat PyGMI, lalu pilih iterasi “elbow”. Yang bisa membuat pengolahanmu berbeda:
+
+Mulai dari spektra mentah. Kamu hitung Z dan QC sendiri, bukan memakai hasil konversi MTpy. Ini beda dari alur umum dan paling mudah dijelaskan.
+Occam ditulis sendiri. Bukan lewat PyGMI.
+Empat mode terpisah. Hampir pasti beda dari yang lain.
+Bobot data berdasarkan dimensi (phase tensor). Frekuensi yang menurut phase tensor tidak 1D diberi error lebih besar. Ini nyambung dengan temuan bahwa datamu tidak benar-benar 1D.
+Ketidakpastian model lewat MCMC. Nilai tambah paling besar, tapi paling berisiko soal waktu. Dikerjakan hanya kalau poin 1 sampai 4 sudah selesai dan tervalidasi.
+Poin 1 sampai 4 menurut saya realistis sebelum jam 18.00. Poin 5 ditunda.
+
+5. Yang perlu kamu tahu
+Karena kamu belum menguasai dasar MT, saya akan menyertakan ringkasan istilah (impedansi, rho semu, fase, Occam, RMS, roughness) dalam bahasa sederhana. Nilai A tidak aman kalau kamu tidak bisa menjelaskan satu langkah pun.
+Hasil di sini hanya valid kalau lolos uji sintetik. Saya akan memberi tahu kalau ada stasiun yang hasilnya mencurigakan, jangan dipaksa terlihat bagus.
+Kata dosen soal “beda sendiri” belum bisa saya pastikan. Itu penilaian dosen.
+Yang perlu kamu acc
+Empat mode: XY, YX, DET, Zssq, dijalankan terpisah.
+Band utama 1 Hz sampai 10 kHz, dengan saklar untuk mengganti.
+Kode sendiri sebagai inti, PyGMI sebagai pembanding yang kamu jalankan, dan hasil temanmu hanya dipakai sebagai referensi.
+Pembeda “indie”: poin 1 sampai 4, poin 5 hanya kalau waktu cukup.
+Keluaran yang kamu mau: kode Python, tabel hasil, dan gambar (kurva rho-fase, model 1D, L-curve). Kamu juga mau laporannya saya bantu tulis, atau hanya kode dan hasilnya? Itu yang belum saya ketahui.
+Kalau lima poin ini sudah cocok, tulis “acc” dan saya mulai dari kode dasarnya. Kalau ada yang ingin diubah, sebut nomornya saja.
+
+Paper Kamu kirim zip, sebagian berbayar tidak ikut Saya hanya menyitir yang benar-benar saya baca. Yang berbayar tidak akan saya klaim sudah dibaca = INI PAPER NYA COBA KAMU BERIKAN DONG DARI HASIL PENCARIAN MU DAN ANALAISIS KAMU BIAR SAYA DOWNLOAD (JADI SEKARANG BERIKAN PAPER" YANG KAMU CARI DAN REKOMENDASIKAN AGAR SAYA DOWNLOAD SEMUANNYA ITU MAU BERBAYAR ATAU TIDAK BERBAYAR YANG UTAMA KALAU BISA 5 TAHUN TERKAHIR YA!! TAPI KALAU SANGANT BERGUANA ATAU DI LEBIH DARI 5 TAHUN GAK APA" KOK DI BERIKAN KE SAYA!!)
+Yang perlu kamu acc
+Empat mode: XY, YX, DET, Zssq, dijalankan terpisah. = ACC
+Band utama 1 Hz sampai 10 kHz, dengan saklar untuk mengganti. = ACC
+Kode sendiri sebagai inti, PyGMI sebagai pembanding yang kamu jalankan, dan hasil temanmu hanya dipakai sebagai referensi. = YANG PYHGMI ITU PENGOLAHAN 1 ANGKATAN JADI ITU YANG UTAMA, UNTUK TIAP KELOMPOK DI SARANKAN BEDA (KAMU PAHAM KAN MAKSUDNYA? COBA JELASKAN ULANG YA!!)
+Pembeda “indie”: poin 1 sampai 4, poin 5 hanya kalau waktu cukup. = ACC
+Keluaran yang kamu mau: kode Python, tabel hasil, dan gambar (kurva rho-fase, model 1D, L-curve). Kamu juga mau laporannya saya bantu tulis, atau hanya kode dan hasilnya? Itu yang belum saya ketahui. = LAPORAN NANTI AJA, SEKARANG KITA FOKUS PENGOLAHAN DAN NANTI KALAU ADA TEMUA" SELAMA PENGOLAHAN TOLONG DI CATAT DALAM MEMORI KAMU YA!!
+Saya cari dulu paper tambahan dan verifikasi yang sudah ada, supaya daftar download-mu hanya berisi paper yang benar-benar saya temukan.
+
+
+Searched the web, read a page
+Searched the web, read a page
+Ini daftar paper yang saya temukan, penjelasan ulang soal PyGMI, dan catatan temuan. Saya baru membaca abstrak atau halaman ringkasnya, belum membaca penuh semuanya. Status Q1/Q2 kamu cek sendiri.
+
+Paper inti 1D MT, Occam, dan invarian sebagian besar klasik (lebih dari 5 tahun). Dari pencarian ini saya tidak menemukan paper Q1/Q2 baru yang spesifik membahas topik itu. Yang ≤5 tahun saya tandai.
+
+1. Paper untuk didownload
+A. Inversi 1D Occam (inti kode kita)
+
+Constable, S. C., Parker, R. L., & Constable, C. G. (1987). Occam’s inversion. Geophysics, 52(3), 289-300. Terbuka: https://mtnet.info/papers/ClassicPapers/Constable_etal_1987_Geophysics.pdf. Ini dasar algoritma yang akan kita tulis ulang.
+Key, K. (2009). 1D inversion of multicomponent, multifrequency marine CSEM data. Geophysics, 74, F9-F20. Halaman paket Occam1D (termasuk inversi MT 1D) terbuka di https://marineemlab.ucsd.edu/Projects/Occam/1DCSEM/. Artikelnya kemungkinan berbayar.
+Tutorial SEG Wiki inversi nonlinier MT 1D (terbuka, berbasis Python/SimPEG). Cocok untuk memahami struktur kodenya: https://wiki.seg.org/wiki/Exploring_nonlinear_inversions:_A_1D_magnetotelluric_example
+Repo Occam 1D MT versi Matlab (github.com/dong-hao/occam1dmt). Memakai data contoh dari paper Constable 1987, jadi bisa dipakai untuk memvalidasi kodemu.
+B. Pengolahan Z dan QC (untuk latar belakang)
+
+Ajithabh, K. S., & Patro, P. K. (2023). SigMT: An open-source Python package for magnetotelluric data processing. Computers & Geosciences, 171, 105270. https://doi.org/10.1016/j.cageo.2022.105270. Kode terbuka: https://github.com/ajithabhks/SigMT. Artikelnya mungkin berbayar. (≤5 th)
+Kappler, K., Peacock, J., Egbert, G. D., et al. (2024). Aurora: An open-source Python implementation of the EMTF package. Journal of Open Source Software, 9. https://doi.org/10.21105/joss.06832. Terbuka. (≤5 th)
+Chen, H., Zhang, L., Ren, Z., Cao, H., & Wang, G. (2023). An automatic preselection strategy for MT single-site data processing. Frontiers in Earth Science, 11. https://doi.org/10.3389/feart.2023.1230071. Terbuka. (≤5 th)
+Zhan, Q., Liu, C., Liu, Y., & Zhao, P. (2023). Data processing method for MT sounding based on cepstral analysis. Frontiers in Earth Science, 11. https://doi.org/10.3389/feart.2023.1183188. Terbuka. (≤5 th)
+Keempat paper ini berbasis time series, sedangkan datamu spektra. Pakai untuk latar belakang dan untuk menjelaskan bahwa pengolahanmu mulai dari spektra, bukan untuk ditiru langsung.
+
+C. Dimensi dan pilihan mode (dasar XY, YX, DET, Zssq)
+
+Caldwell, T. G., Bibby, H. M., & Brown, C. (2004). The magnetotelluric phase tensor. Geophysical Journal International, 158(2), 457-469. Terbuka: https://mtnet.info/papers/ClassicPapers/Caldwell_etal_2004_GJI.pdf
+Bibby, H. M., Caldwell, T. G., & Brown, C. (2005). Determinable and non-determinable parameters of galvanic distortion in magnetotellurics. GJI, 163(3), 915-930. https://researchrepository.universityofgalway.ie/entities/publication/e54cd61a-16d2-47b9-a5e2-dc852dde9fb0
+Moorkamp, M. (2007). Comment on “The magnetotelluric phase tensor”. GJI, 171, 565-566. Terbuka: https://www.MTnet.info/papers/ClassicPapers/Moorkamp_2007_GJI.pdf. Isinya koreksi rumus phase tensor, penting supaya kodemu tidak salah.
+Pedersen, L. B., & Engels, M. (2005). Routine 2D inversion of MT data using the determinant of the impedance tensor. Geophysics, 70, G33-G41. Abstrak: https://hero.epa.gov/hero/index.cfm/reference/details/reference_id/509579. Teks penuh kemungkinan berbayar. Ini dasar pemakaian mode DET.
+Gómez-Treviño, E., Muñiz, Y., Cuellar, M., et al. (2018). Invariant TE and TM magnetotelluric impedances: application to the BC87 dataset. Earth, Planets and Space, 70, 133. https://doi.org/10.1186/s40623-018-0900-y. Terbuka. Mereka menurunkan dua invarian yang pada kasus 2D sama dengan TE dan TM tanpa perlu menentukan arah strike. Ini bisa jadi pembeda tambahan.
+Weaver, J. T., Agarwal, A. K., & Lilley, F. E. M. (2000). Characterization of the magnetotelluric tensor in terms of its invariants. GJI, 141, 321-336. Terbuka: https://www.MTnet.info/papers/ClassicPapers/Weaver_etal_2000_GJI.pdf
+Martí et al. (2009). WALDIM, kode analisis dimensi. Computers & Geosciences. Terbuka: https://mtnet.info/papers/ClassicPapers/Marti_etal_2009_CG_WALDIM.pdf. Penulis lengkap dan volume belum saya verifikasi.
+Rung-Arunwan, Siripunvaraporn, & Utada, abstrak konferensi SGEPSS (tahun belum saya verifikasi): https://sgepss.org/OLD/sookai/136/html/program/pdf/R003/R003-07.pdf. Mendefinisikan Zssq sebagai akar dari ssq(Z)/2 dan mengutip Szarka dan Menvielle (1997) sebagai sumber invariannya. Paper asli Szarka & Menvielle (1997) belum saya verifikasi detail jurnalnya, cari sendiri.
+D. Untuk nilai plus
+
+Mandolesi, E., Ogaya, X., Campanyà, J., & Piana Agostinetti, N. (2018). A reversible-jump MCMC algorithm for 1D inversion of magnetotelluric data. Computers & Geosciences. https://doi.org/10.1016/j.cageo.2018.01.011. Versi terbuka: https://dspace.library.uvic.ca/items/02bc1e14-896b-4630-8c1e-4c0ef8ebb06a. Inti ide “model dengan ketidakpastian” dan kodenya trans-dimensional.
+Goyes-Peñafiel, P., Waheed, U. bin, & Arguello, H. Physically guided deep unsupervised inversion for 1-D MT models. IEEE GRSL, art. 7503005. Versi terbuka arXiv:2410.15274. Cek tahun terbit di halaman IEEE. (≤5 th)
+Physics-informed deep learning inversion with application to noisy MT measurements. Remote Sensing, 16(1), 62. https://www.mdpi.com/2072-4292/16/1/62. Terbuka. Penulis cek di halaman. (≤5 th)
+Conway, D., Heinson, G., Rees, N., & Rugari, J. (2018). Time-lapse inversion of 1D MT data. Earth, Planets and Space, 70. https://doi.org/10.1186/s40623-018-0791-y. Terbuka. Opsional, untuk ide regularisasi.
+E. Konteks Indonesia (pelengkap, bukan Q1/Q2 terverifikasi)
+
+Way Umpu, Lampung (IJTech, 2014), membandingkan Bostick, Occam 1D, dan NLCG 2D: https://ijtech.eng.ui.ac.id/article/view/1306
+“Inversi 1-D pada data MT di lapangan X menggunakan metode Occam dan Simulated Annealing” (ITS, Geosaintek, tahun dan penulis cek di halaman): https://iptek.its.ac.id/index.php/geosaintek/article/download/1920/1669
+Sutarno, D. (2016). Development of robust MT impedance estimation: a review. Indonesian Journal of Physics, 16(3), 79-89: https://ijphysics.fi.itb.ac.id/index.php/ijp/article/view/127
+Kalau ada yang berbayar dan tidak bisa kamu buka, kabari judulnya dan saya carikan versi terbukanya (repositori atau arXiv). Selain zip, kamu juga bisa unggah paper tertentu langsung, dan saya baca isinya penuh.
+
+2. PyGMI, pemahaman saya yang diperbaiki
+Saya sebelumnya salah susun. Yang benar menurut penjelasanmu:
+
+PyGMI adalah pengolahan utama angkatan. Itu hasil standar semua kelompok, jadi harus ada.
+Tiap kelompok disarankan membuat pengolahan yang berbeda. Itulah yang dinilai lebih tinggi oleh dosen.
+Jadi urutannya terbalik dari rencana saya:
+
+Jalur	Peran
+PyGMI (Occam1D)	Utama (baseline angkatan)
+Kode sendiri (spektra ke Z, QC, Occam sendiri, 4 mode, bobot phase tensor)	Pembeda kelompokmu
+Saya siapkan file input PyGMI dengan format yang sama seperti punya temanmu (supaya cocok dengan alur angkatan). Kamu yang menjalankan di laptopmu, karena saya tidak bisa menjalankan GUI-nya. Kode sendiri tetap dikerjakan dan hasilnya dibandingkan dengan PyGMI. Saya asumsikan kelompokmu ikut menjalankan PyGMI sendiri. Kalau ternyata cukup memakai hasil ketua pengolahan, kabari.
+
+3. Soal “mencatat di memori”
+Memori lintas chat tidak aktif di akunmu (belum diaktifkan di Settings), jadi saya tidak bisa menyimpannya permanen. Selama chat ini saya catat terus. Kalau mau, saya buatkan file catatan (.md) yang bisa kamu simpan dan unggah lagi di chat baru. Catatan sejauh ini:
+
+EDI milikmu berisi spektra mentah (7x7, 96 frekuensi), bukan Z. Referensinya kanal lokal, bukan remote reference.
+Setiap stasiun punya 1 sampai 8 blok nol di frekuensi terendah. MT9 hanya 92 frekuensi.
+Koherensi di bawah 0,01 Hz terlihat tinggi tapi tidak dipercaya, karena stacking cuma sekitar 2.
+Z hasil hitung saya cocok persis dengan Z di EDI temanmu. Datanya sama.
+Zssq temanmu bukan koreksi static shift. Beberapa model PyGMI temannya punya RMS di atas 2 dan resistivitas ekstrem (sampai ratusan ribu Ω·m).
+Data tidak benar-benar 1D. Hanya sekitar 32% titik mendekati 1D di band 100 Hz sampai 10 kHz. MT9 paling ekstrem, MT1, MT6, dan MT7 paling baik.
+Keputusan sementara yang kamu setujui: 4 mode terpisah (XY, YX, DET, Zssq), band 1 Hz sampai 10 kHz dengan saklar, laporan ditunda.
+Kalau pemahaman soal PyGMI di bagian 2 sudah benar, kabari “benar” dan saya mulai tahap pertama kode (spektra ke Z, QC, rho dan fase) beserta penjelasan sederhananya.
+
+Files hidden when shared
+SAYA MAU BUAT PROJECT TENTANG CAHT IN DAN NANTI JUGA DI AKUN" LAIN MENURUT KAMU ISINYA APA SAJA YA!!!! SUPAYA BISA MENYIMPAN MEMORINYA!! ATAU APA SAJA YANG UDH KITA LAKUKAN!!
+
+Saya cek dulu cara kerja Projects di dokumentasi resmi supaya saran saya akurat.
+
+
+Searched the web, created a file, shared files
+Searched the web, created a file, shared files
+Isi project-nya cukup tiga bagian: kolom deskripsi, instruksi project, dan file catatan. Saya sudah buatkan file catatannya (KULTER_catatan_proyek.md). Isinya ringkasan tugas, data, temuan, keputusan yang sudah kamu ACC, rencana kerja, daftar paper, dan hal yang belum diputuskan.
+
+1. Nama dan kolom “What are you trying to achieve?”
+Nama: KULTER 1D MT Ponorogo (lebih jelas daripada “KULTER” saja). Tempel ini di kolom deskripsi:
+
+Pengolahan data magnetotellurik (MT) 1D dengan coding untuk mata kuliah KULTER. 10 stasiun dekat Ponorogo (MT1-MT10), format EDI spektra. Jalur utama angkatan: PyGMI (Occam1D). Jalur pembeda kelompok: kode Python sendiri (spektra ke impedansi, QC, Occam sendiri, mode XY/YX/DET/Zssq, bobot phase tensor). Deadline 25 Okt 2026 pukul 23.59. Laporan menyusul.
+2. Project instructions (“Set project instructions”)
+Setelah project dibuat, klik “Set project instructions” dan tempel:
+
+Kamu mentor akademik untuk mahasiswa Teknik Geofisika ITS (semester 6) yang belum menguasai dasar MT. Jelaskan tiap langkah dengan bahasa mahasiswa yang sederhana. Baca file KULTER_catatan_proyek.md di project knowledge sebelum menjawab dan patuhi keputusan di dalamnya. Gunakan sitasi APA (Nama, Tahun) hanya dari sumber yang benar-benar ditemukan atau dibaca, jangan mengarang. Utamakan 5 tahun terakhir dan Scopus Q1-Q2, paper klasik boleh sebagai fondasi. Hindari tanda pisah panjang dan titik koma. Jangan klaim sudah membaca paper yang hanya dilihat abstraknya. Jangan menyalin hasil teman, buat pengolahan yang beda. Kalau menemukan sesuatu yang penting, catat di bagian akhir jawaban agar bisa dimasukkan ke catatan proyek.
+3. Project knowledge (file yang diunggah)
+KULTER_catatan_proyek.md (wajib).
+Zip paper yang akan kamu kirim, atau PDF paper yang paling penting saja.
+Nanti: kode Python yang sudah jadi dan tabel hasilnya.
+Jangan unggah zip data yang besar (sekitar 15 MB). Cukup 1 atau 2 file EDI contoh.
+4. Supaya “memorinya” tidak hilang
+Dari panduan yang saya temukan (ini panduan pihak ketiga, bukan dokumentasi resmi Anthropic, jadi cek di aplikasimu), chat baru di dalam project mendapat akses ke instruksi dan file knowledge. Isi chat lama tidak otomatis ikut, kecuali masuk ke knowledge atau fitur memori.
+Memori otomatis di akunmu belum aktif. Jadi cara paling aman: setiap selesai satu tahap, bilang “perbarui catatan proyek”. Saya buatkan versi barunya, kamu hapus file lama di project knowledge lalu unggah yang baru.
+5. Untuk akun lain
+Project tersimpan per akun, jadi di akun lain buat project yang sama (nama sama) dengan teks deskripsi dan instruksi yang sama, lalu unggah file catatan yang sama. Kalau suatu saat kamu pindah akun, file KULTER_catatan_proyek.md itulah yang membawa seluruh konteks kita.
+
+Kalau project sudah jadi, kabari “benar” untuk poin PyGMI dari pesan sebelumnya, lalu saya mulai tahap pertama kodenya.
+
+Kulter catatan proyek
+Document
+·MD
+Files hidden when shared
+PyGMI, pemahaman saya yang diperbaiki Saya sebelumnya salah susun. Yang benar menurut penjelasanmu:
+PyGMI adalah pengolahan utama angkatan. Itu hasil standar semua kelompok, jadi harus ada.
+Tiap kelompok disarankan membuat pengolahan yang berbeda. Itulah yang dinilai lebih tinggi oleh dosen.
+BENAR
+
+Project knowledge (file yang diunggah)
+KULTER_catatan_proyek.md (wajib).
+Zip paper yang akan kamu kirim, atau PDF paper yang paling penting saja.
+Nanti: kode Python yang sudah jadi dan tabel hasilnya.
+Jangan unggah zip data yang besar (sekitar 15 MB). Cukup 1 atau 2 file EDI contoh.
+INI SAYA ADA PROMPT HANDOFF NYA JADI TOLONG DI KOREKSI!! PROMPT ADA DI PASTED YANG SAYA BERIKAN DAN INI ADA PROMPT UNTUK DI AKUN BARU BUAT BACA FILE MD YANG DI KIRIM ATAU BISA IBARAT AWAL PERCAKAPAN!
+
+"Ini handoff dari sesi lama di akun lain. Baca dokumen handoff dan semua file terlampir sampai selesai. Sebelum melanjutkan, ringkas ulang dengan kata-katamu sendiri: (1) tugas dan deadline, (2) posisi terakhir pekerjaan, (3) hal yang masih terbuka, dan (4) preferensi kerjaku. Tandai bagian yang kamu ragukan. Tunggu konfirmasiku sebelum lanjut."
+
+Poin PyGMI sudah terkonfirmasi, jadi saya anggap final. Prompt handoff-mu strukturnya sudah bagus, tapi ada beberapa celah. Di bawah ini koreksinya, lalu dua versi yang sudah diperbaiki.
+
+Yang saya koreksi
+Label sumber. Kamu punya aturan “jangan klaim membaca paper yang hanya dilihat abstraknya”, tapi belum ada labelnya. Saya tambah [HANYA ABSTRAK].
+Kode di sandbox. Skrip bantu saya (pembaca spektra, fungsi spektra ke Z, analisis koherensi dan phase tensor) hanya ada di sandbox sesi ini dan tidak ikut ke akun baru. Bagian 4 sekarang wajib menyalinnya utuh.
+Jam. Saya tidak punya stempel jam per pesan, jadi prompt melarang mengarang jam.
+Output file. Handoff harus dibuat sebagai file dan ditampilkan supaya bisa diunduh, bukan ditulis di chat.
+Penamaan kalau dipecah. Ditambah _Part1, _Part2.
+Preferensi akun. Teks preferensi di Settings tidak terbawa ke akun baru. Sekarang diminta disalin utuh dalam satu blok.
+Aturan gaya. Tanpa tanda pisah panjang dan titik koma, bahasa Indonesia, berlaku juga di dokumen handoff.
+Bentrok dengan catatan. Ada dua dokumen (handoff dan KULTER_catatan_proyek.md). Saya tambah aturan: handoff yang lebih baru menang, dan konfliknya ditandai.
+Koreksi dan file yang belum dibuka. Bagian 3 diminta mencatat kesalahan saya yang sudah kamu koreksi (salah susun PyGMI, salah arti “indie”, DET sebagai utama yang kamu ganti jadi semua mode terpisah). Saya juga belum membuka notebook peta horizontal dan vertikal, semua PNG, file GMT, dan log Occam temanmu. Itu harus tercatat jujur.
+Sumber web. Dipisah antara yang dibaca penuh dan yang cuma potongan.
+Prompt pembuka ganda. Bagian 10 dan prompt pembukamu bentrok, jadi saya samakan.
+Prompt handoff (tempel di chat lama)
+Buat dokumen handoff lengkap untuk memindahkan pekerjaan ini ke sesi baru di akun lain. Tulis dalam bahasa Indonesia, tanpa tanda pisah panjang dan tanpa titik koma.
+
+LANGKAH PERSIAPAN (lakukan sebelum menulis):
+- Baca ulang SELURUH percakapan dari pesan pertama, termasuk isi file yang kuunggah, hasil tool, hasil pencarian web, dan koreksi dariku.
+- Kalau ada bagian awal percakapan yang terpotong, diringkas otomatis, atau tidak bisa kamu akses, tulis itu jelas di bagian paling atas dokumen. Jangan berpura-pura lengkap.
+- Kalau dokumen terlalu panjang untuk satu file, pecah menjadi beberapa file bernama _Part1, _Part2, dst. Jangan memangkas isi demi muat. Di Part1 tulis jumlah bagian dan isi tiap bagian.
+
+SISTEM LABEL (pakai konsisten di seluruh dokumen):
+- [TERVERIFIKASI]: dihitung atau dibaca langsung dari file atau sumber di percakapan ini, sebutkan sumbernya
+- [HANYA ABSTRAK]: paper atau halaman yang hanya terlihat abstrak atau potongan hasil pencarian, belum dibaca penuh
+- [USULAN CLAUDE]: saran dari Claude yang belum kusetujui secara eksplisit
+- [KEPUTUSAN USER]: sudah kusetujui atau kunyatakan sendiri
+- [ASUMSI]: dasar kerja yang dipakai tapi belum dikonfirmasi
+- [TIDAK PASTI]: kamu ragu atau tidak ingat pasti
+- [DI LUAR CHAT]: hal yang kukerjakan sendiri di luar percakapan ini, yang tidak bisa kamu verifikasi
+
+STRUKTUR DOKUMEN (ikuti urutan ini):
+
+0. RINGKASAN 10 BARIS DI ATAS
+Tugas utama, status sekarang, titik lanjut persis, deadline, dan 3 hal paling penting yang tidak boleh terlewat.
+
+0b. METADATA SESI
+Tanggal pembuatan. Jam hanya bila kamu benar-benar tahu, kalau tidak tulis "jam tidak diketahui". Platform, model bila diketahui, tool atau connector yang dipakai. Tulis juga apa yang TIDAK terbawa ke akun baru: memori, custom instructions dan preferensi akun, file di Project, hasil tool, file di sandbox sesi lama.
+
+1. Konteks dan Latar Belakang
+Siapa yang terlibat dan hubungannya, tujuan besar, alasan tugas dimulai, deadline (termasuk bila pernah berubah), serta kronologi pesan demi pesan. Jangan mengarang jam per pesan, cukup urutan.
+
+2. Semua File
+Untuk setiap file yang diunggah, dibuat, atau diedit: nama PERSIS (termasuk awalan hash, nomor versi, ekstensi), isi ringkas, kapan dan kenapa dibuat atau diubah, serta statusnya: aktif, usang, atau identik dengan file lain. Tulis file mana yang tidak sempat dibuka. Untuk file buatan Claude, tulis apakah sudah kuterima di chat atau hanya ada di sandbox sesi ini. Skrip bantu yang hanya ada di sandbox juga harus didaftar dengan nama dan fungsinya.
+
+3. Keputusan, Analisis, dan Hasil
+Setiap angka, rumus, kesimpulan, nama paper, parameter, dan hasil perhitungan yang muncul, lengkap dengan cara mendapatkannya dan label statusnya. Pisahkan sumber web yang dibaca penuh dari yang hanya potongan atau abstrak. Tulis setiap kesalahan Claude yang pernah kukoreksi beserta koreksinya.
+
+4. Isi Penting yang Disalin UTUH
+Salin tanpa diringkas: kode (termasuk skrip sandbox yang belum kuterima, terutama fungsi pembaca spektra dan penghitung Z), rumus, tabel hasil, draf teks, prompt, dan panduan langkah demi langkah yang masih relevan. Kalau terlalu panjang, jelaskan letaknya atau bilang bahwa isinya perlu dibuat ulang.
+
+5. Pekerjaan yang Sedang Berjalan
+Progress persis sampai pesan terakhir. Tulis apa yang SUDAH dibahas dan apa yang BELUM disentuh sama sekali. Tulis juga hal yang tidak kamu ketahui karena aku mengerjakannya di luar chat.
+
+6. PR dan Pertanyaan Terbuka
+Semua yang belum selesai, belum diputuskan, atau menunggu konfirmasiku. Sertakan pertanyaan yang sudah kamu ajukan tapi belum kujawab.
+
+7. Gaya Kerja dan Preferensi
+Gabungkan SEMUA sumber: instruksi yang kunyatakan di chat, custom instructions atau preferensi akun yang kamu lihat, serta memori bila ada. Kutip kata-kataku langsung untuk instruksi, larangan, dan koreksi. Salin teks preferensi akun UTUH dalam satu blok tersendiri supaya bisa kutempel ke akun baru. Sertakan juga bahasa, nada, format, dan cara belajarku yang tampak. Pisahkan mana yang kunyatakan eksplisit dan mana yang hanya pengamatanmu.
+
+8. Glosarium dan Istilah Ambigu
+Istilah yang punya lebih dari satu arti di percakapan ini, singkatan, dan nama proyek atau stasiun yang bisa membingungkan (contoh: arti "indie" dari dosen, TE di file teman, Zssq, KULTER).
+
+9. File yang Harus Diupload ke Sesi Baru
+Daftar lengkap, urut dari yang paling penting, termasuk dokumen handoff ini dan KULTER_catatan_proyek.md. Tandai mana yang wajib, opsional, dan boleh dilewati beserta alasannya. Tulis juga file data yang perlu kuunggah ulang karena sandbox lama tidak terbawa.
+
+10. Langkah Selanjutnya dan Prompt Pembuka
+Tulis instruksi eksplisit untuk Claude di sesi baru, termasuk titik persis untuk melanjutkan dan apa yang ditanyakan lebih dulu. Lalu tulis SATU prompt pembuka siap tempel dengan kerangka berikut (ganti nama file sesuai dokumen yang kamu buat):
+"Ini handoff dari sesi lama di akun lain untuk proyek KULTER (pengolahan MT 1D). Baca semua file di project knowledge atau lampiran, terutama Handoff_*.md (semua Part bila ada) dan KULTER_catatan_proyek.md, sampai selesai. Kalau ada file yang tidak terbaca, sebutkan namanya dan jangan menebak isinya. Sebelum melanjutkan, ringkas ulang dengan kata-katamu sendiri: (1) tugas dan deadline, (2) posisi terakhir pekerjaan, (3) hal yang masih terbuka dan pertanyaan yang belum kujawab, (4) preferensi kerjaku, (5) file yang berhasil dan tidak berhasil kamu baca, (6) file data yang perlu kuunggah ulang. Hormati label di handoff, jangan menganggapnya sudah kamu verifikasi sendiri. Kalau handoff bertentangan dengan KULTER_catatan_proyek.md, tandai konfliknya dan anggap handoff yang lebih baru. Tandai bagian yang kamu ragukan. Jangan menulis kode, menganalisis data, atau mencari paper baru sebelum aku bilang lanjut."
+
+ATURAN:
+- Jangan menambah apa pun yang tidak benar-benar terjadi atau dinyatakan di percakapan.
+- Boleh menyimpulkan HANYA bila diberi label [ASUMSI] atau [TIDAK PASTI].
+- Sertakan semua nama file, nomor versi, angka, dan nama sumber persis seperti disebut. Jangan digeneralisasi.
+- Buat sebagai file .md dan tampilkan agar bisa kuunduh. Nama file: Handoff_[Topik]_[YYYY-MM-DD]_V[n].md (tambah _Part[k] bila dipecah).
+
+CEK DIRI SEBELUM MENYERAHKAN:
+Pastikan tidak ada file yang disebut di percakapan tapi hilang dari daftar, semua angka penting ikut tercatat, semua pertanyaanku yang belum terjawab ada di Bagian 6, semua preferensiku ada di Bagian 7, dan kode sandbox ada di Bagian 4.
+
+Setelah file jadi, balas di chat dengan singkat: nama file, dan daftar poin bertanda [TIDAK PASTI] agar bisa kukonfirmasi.
+Prompt pembuka di akun baru
+Ini handoff dari sesi lama di akun lain untuk proyek KULTER (pengolahan MT 1D). Cari dan baca semua file di project knowledge atau lampiran, terutama Handoff_*.md (semua Part bila ada) dan KULTER_catatan_proyek.md, sampai selesai. Kalau ada file yang tidak terbaca atau tidak ada, sebutkan namanya dan jangan menebak isinya.
+
+Sebelum melanjutkan, ringkas ulang dengan kata-katamu sendiri:
+1. Tugas dan deadline.
+2. Posisi terakhir pekerjaan.
+3. Hal yang masih terbuka dan pertanyaan yang belum kujawab.
+4. Preferensi kerjaku.
+5. Daftar file yang berhasil dan tidak berhasil kamu baca.
+6. File data yang perlu kuunggah ulang untuk melanjutkan.
+
+Hormati label di handoff ([KEPUTUSAN USER], [USULAN CLAUDE], [HANYA ABSTRAK], dst) dan jangan menganggapnya sudah kamu verifikasi sendiri. Kalau handoff bertentangan dengan KULTER_catatan_proyek.md, tandai konfliknya dan anggap handoff yang lebih baru. Tandai bagian yang kamu ragukan. Jangan menulis kode, menganalisis data, atau mencari paper baru sebelum aku bilang "lanjut".
+Satu penyesuaian lagi: di Project instructions akun baru, ubah kalimat “Baca file KULTER_catatan_proyek.md” menjadi “Baca file KULTER_catatan_proyek.md dan Handoff_* terbaru di project knowledge”. Preferensi akun (Settings, Profile) juga harus ditempel ulang di akun baru. Teksnya nanti ada di Bagian 7 handoff.
+
+Mau handoff dibuat sekarang, atau kita kerjakan tahap 1 kode dulu lalu handoff dibuat setelahnya (supaya kodenya ikut tercatat utuh)?
+

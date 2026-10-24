@@ -1,0 +1,34 @@
+Format:             OCCAMITER_FLEX
+Description:        1D_Occam_Inv
+Model File:         Model1D
+Data File:          Occam1d_DataFile_TE.dat
+Date/Time:          09/10/2026 18:11:57.185
+Iterations to run:  20
+Target Misfit:      1.0000000000000000
+Roughness Type:     1
+Stepsize Cut Count: 8
+!Bounds Transform:       bandpass
+!Model bounds:       min,max
+!Model Value Steps:  stepsize (e.g. 0.2 or 0.1)
+Delta Misfit Limit: 0.0000000000000000
+ !Auto Converge: N,Threshold,Factor,KonvEq2Flag
+Debug Level:        1
+Iteration:          5
+Lagrange Value:     0.49011964565650268
+Roughness Value:    2.2471120086729721
+Misfit Value:       2.2091257984904540
+Misfit Reached:     0
+Param Count:        51
+     2.015480         2.382621         2.474514         2.311455    
+     1.962740         1.603651         1.529575         1.719062    
+     1.918332         2.020285         2.014589         1.919442    
+     1.758748         1.709707         1.824172         2.019911    
+     2.213343         2.364308         2.426536         2.391163    
+     2.256375         2.023853         1.702797         1.439084    
+     1.405224         1.609876         1.875719         2.129549    
+     2.349201         2.535461         2.688809         2.815080    
+     2.915871         2.995332         3.054404         3.093925    
+     3.116407         3.124004         3.118710         3.102539    
+     3.077696         3.046715         3.012559         2.978627    
+     2.948674         2.938158         3.404263         3.881906    
+     4.329252         4.758828         5.181283    

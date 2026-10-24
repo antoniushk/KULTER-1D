@@ -1,0 +1,39 @@
+Format: Resistivity1DMod_1.0
+#LAYERS:    32
+!Set free values to -1 or ? 
+!penalize between 1 and 0,0 allowing jump between layers and 1 smooth. 
+!preference is the assumed resistivity on linear scale. 
+!pref_penalty needs to be put if preference is not 0 [0,1]. 
+! top_depth   resistivity   penalty   preference   pref_penalty
+-10000   1d12   0   0   0   !air layer   
+0   -1   0   0   0   !first ground layer   
+10   -1   1   0   0   
+20   -1   1   0   0   
+30   -1   1   0   0   
+40   -1   1   0   0   
+50   -1   1   0   0   
+70   -1   1   0   0   
+90   -1   1   0   0   
+110   -1   1   0   0   
+140   -1   1   0   0   
+170   -1   1   0   0   
+210   -1   1   0   0   
+250   -1   1   0   0   
+300   -1   1   0   0   
+360   -1   1   0   0   
+430   -1   1   0   0   
+510   -1   1   0   0   
+610   -1   1   0   0   
+710   -1   1   0   0   
+810   -1   1   0   0   
+910   -1   1   0   0   
+1010   -1   1   0   0   
+1210   -1   1   0   0   
+1410   -1   1   0   0   
+1610   -1   1   0   0   
+1910   -1   1   0   0   
+3910   -1   1   0   0   
+4910   -1   1   0   0   
+5910   -1   1   0   0   
+6710   -1   1   0   0   
+7310   -1   1   0   0   
